@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4661670659180944}
   m_Layer: 0
-  m_Name: Wheet
+  m_Name: Wheat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
