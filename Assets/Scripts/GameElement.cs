@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameElement : MonoBehaviour {
+public class ViewElement : MonoBehaviour {
 
 	private static GameApplication app;
-	public static GameApplication App { 
+	protected static GameApplication App { 
 		get{
 			if(app == null){
 				app = (GameApplication)FindObjectOfType(typeof(GameApplication));
@@ -13,5 +13,18 @@ public class GameElement : MonoBehaviour {
 
 			return app;
 		}
+	}
+}
+
+public class ControllerElement {
+	private static GameApplication app;
+	public static GameApplication App { 
+		get{
+			return app;
+		}
+	}
+
+	public ControllerElement(GameApplication application){
+		app = application;
 	}
 }

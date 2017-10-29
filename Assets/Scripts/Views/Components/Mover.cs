@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Mover : MonoBehaviour {
+public class Mover : MonoBehaviour, ICommandListener {
 
 	private NavMeshAgent agent;
 
@@ -14,5 +14,9 @@ public class Mover : MonoBehaviour {
 
 	public void MoveTo(Vector3 destination){
 		agent.SetDestination(destination);
+	}
+
+	public void RightClicked(RaycastHit hit){
+		MoveTo(hit.point);
 	}
 }

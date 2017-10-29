@@ -29,11 +29,21 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public Item WithdrawItem(Item item){
-		for (int i = 0; i < InventorySlots; i++){
+		for (int i = InventorySlots - 1; i >= 0; i--){
 			if(items[i] == item){
 				items[i] = null;
 				OnItemWithdrawn(item);
 				return item;
+			}
+		}
+	
+		return null;
+	}
+
+	public Item WithdrawItem(){
+		for (int i = 0; i < InventorySlots; i++){
+			if(Items[i] != null){
+				return Items[i];
 			}
 		}
 	

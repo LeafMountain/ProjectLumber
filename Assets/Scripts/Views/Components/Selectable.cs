@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Selectable : MonoBehaviour {
 
+	public UnityEvent selected;
+	public UnityEvent deselected;
+
 	public void Select(){
-		Debug.Log(transform.name + " selected");
+		selected.Invoke();
 	}
 
 	public void DeSelect(){
-		Debug.Log(transform.name + " deselected");		
+		deselected.Invoke();
 	}
 }
