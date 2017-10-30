@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class Selectable : MonoBehaviour {
 
 	public UnityEvent selected;

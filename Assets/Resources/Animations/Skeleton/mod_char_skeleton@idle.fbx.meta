@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 255d685ac5891aa4a81fb2e6e3489e94
+timeCreated: 1490710306
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: elbow_LFT_01
+    100002: elbow_RGT_01
+    100004: fingers_LFT_01
+    100006: fingers_RGT_01
+    100008: hand_LFT_01
+    100010: hand_RGT_01
+    100012: hip_LFT_01
+    100014: hip_RGT_01
+    100016: knee_LFT_01
+    100018: knee_RGT_01
+    100020: //RootNode
+    100022: neck_CEN_01
+    100024: palm_LFT_01
+    100026: palm_RGT_01
+    100028: root_CEN
+    100030: shoulder_LFT_01
+    100032: shoulder_RGT_01
+    100034: spine_CEN_01
+    100036: spine_CEN_02
+    100038: spine_CEN_03
+    100040: thumb_LFT_01
+    100042: thumb_LFT_02
+    100044: thumb_RGT_01
+    100046: thumb_RGT_02
+    100048: toe_LFT_01
+    100050: toe_LFT_01 1
+    100052: toe_RGT_01
+    100054: toe_RGT_01 1
+    100056: wrist_LFT_01
+    100058: wrist_RGT_01
+    400000: elbow_LFT_01
+    400002: elbow_RGT_01
+    400004: fingers_LFT_01
+    400006: fingers_RGT_01
+    400008: hand_LFT_01
+    400010: hand_RGT_01
+    400012: hip_LFT_01
+    400014: hip_RGT_01
+    400016: knee_LFT_01
+    400018: knee_RGT_01
+    400020: //RootNode
+    400022: neck_CEN_01
+    400024: palm_LFT_01
+    400026: palm_RGT_01
+    400028: root_CEN
+    400030: shoulder_LFT_01
+    400032: shoulder_RGT_01
+    400034: spine_CEN_01
+    400036: spine_CEN_02
+    400038: spine_CEN_03
+    400040: thumb_LFT_01
+    400042: thumb_LFT_02
+    400044: thumb_RGT_01
+    400046: thumb_RGT_02
+    400048: toe_LFT_01
+    400050: toe_LFT_01 1
+    400052: toe_RGT_01
+    400054: toe_RGT_01 1
+    400056: wrist_LFT_01
+    400058: wrist_RGT_01
+    7400000: idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root_CEN
+        weight: 1
+      - path: root_CEN/hip_LFT_01
+        weight: 1
+      - path: root_CEN/hip_LFT_01/knee_LFT_01
+        weight: 1
+      - path: root_CEN/hip_LFT_01/knee_LFT_01/toe_LFT_01
+        weight: 1
+      - path: root_CEN/hip_LFT_01/knee_LFT_01/toe_LFT_01/toe_LFT_01 1
+        weight: 1
+      - path: root_CEN/hip_RGT_01
+        weight: 1
+      - path: root_CEN/hip_RGT_01/knee_RGT_01
+        weight: 1
+      - path: root_CEN/hip_RGT_01/knee_RGT_01/toe_RGT_01
+        weight: 1
+      - path: root_CEN/hip_RGT_01/knee_RGT_01/toe_RGT_01/toe_RGT_01 1
+        weight: 1
+      - path: root_CEN/spine_CEN_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/neck_CEN_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01/hand_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01/hand_LFT_01/palm_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01/hand_LFT_01/palm_LFT_01/fingers_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01/hand_LFT_01/thumb_LFT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_LFT_01/elbow_LFT_01/wrist_LFT_01/hand_LFT_01/thumb_LFT_01/thumb_LFT_02
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01/hand_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01/hand_RGT_01/palm_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01/hand_RGT_01/palm_RGT_01/fingers_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01/hand_RGT_01/thumb_RGT_01
+        weight: 1
+      - path: root_CEN/spine_CEN_01/spine_CEN_02/spine_CEN_03/shoulder_RGT_01/elbow_RGT_01/wrist_RGT_01/hand_RGT_01/thumb_RGT_01/thumb_RGT_02
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

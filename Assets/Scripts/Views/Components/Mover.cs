@@ -8,6 +8,8 @@ public class Mover : MonoBehaviour, ICommandListener {
 
 	private NavMeshAgent agent;
 
+	public float Velocity { get { return agent.velocity.magnitude; } }
+
 	private void Awake(){
 		agent = GetComponent<NavMeshAgent>();
 	}

@@ -28,7 +28,6 @@ public class MouseController : ControllerElement {
 
 	private Selectable LeftClick(RaycastHit mouseHit){
 		if(Input.GetMouseButtonDown(0)){
-			Debug.Log("test");
 			//Keep selection if shift is pressed
 			if(!Input.GetKey(KeyCode.LeftShift)){
 				App.Controller.Selection.ClearSelection();

@@ -9,18 +9,24 @@ public class Inventory : MonoBehaviour {
 	public int InventorySlots{ get { return inventorySlots; }}
 
 	[SerializeField]
-	private Item[] items;
-	public Item[] Items { get{ return items; }}
+	private Storeable[] storeables;
+	public Storeable[] Storeables { get{ return storeables; }}
+
+	[SerializeField]
+	private Transform[] storePositions;
 
 	private void Awake(){
-		items = new Item[InventorySlots];
+		storeables = new Storeable[InventorySlots];
 	}
 
-	public bool DepositItem(Item item){
+	public bool DepositItem(Storeable storeable){
 		for (int i = 0; i < InventorySlots; i++){
-			if(items[i] == null){
-				items[i] = item;
-				OnItemDeposited(item);
+			if(storeables[i] == null){
+				storeables[i] = storeable;
+
+				storeable.transform.SetParent(storePositions[i]);
+				storeable.transform.position = storePositions[i].position;
+
 				return true;
 			}
 		}
@@ -28,22 +34,23 @@ public class Inventory : MonoBehaviour {
 		return false;
 	}
 
-	public Item WithdrawItem(Item item){
+	public Storeable WithdrawItem(Storeable storeable){
 		for (int i = InventorySlots - 1; i >= 0; i--){
-			if(items[i] == item){
-				items[i] = null;
-				OnItemWithdrawn(item);
-				return item;
+			if(storeables[i] == storeable){
+				storeables[i] = null;
+				storePositions[i] = null;				
+
+				return storeable;
 			}
 		}
 	
 		return null;
 	}
 
-	public Item WithdrawItem(){
+	public Storeable WithdrawItem(){
 		for (int i = 0; i < InventorySlots; i++){
-			if(Items[i] != null){
-				return Items[i];
+			if(Storeables[i] != null){
+				return Storeables[i];
 			}
 		}
 	
@@ -53,24 +60,4 @@ public class Inventory : MonoBehaviour {
 	public Item FindItemOfType(){
 		return null;
 	}
-
-#region Events
-
-	public delegate void InventoryEvent(Item item);
-
-	public InventoryEvent ItemDeposited;
-	public InventoryEvent ItemWithdrawn;
-
-	private void OnItemDeposited(Item item){
-		if(ItemDeposited != null){
-			ItemDeposited.Invoke(item);
-		}
-	}
-
-	private void OnItemWithdrawn(Item item){
-		if(ItemWithdrawn != null){
-			ItemWithdrawn.Invoke(item);
-		}
-	}
-#endregion
 }
