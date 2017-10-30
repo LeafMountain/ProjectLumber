@@ -12,6 +12,7 @@ Sandbox game that uses the best part of strategy games, building the base. Your 
 * Stardew valley
 * Factorio
 * City skylines
+* http://www.eyezmaze.com/sp/2016/08/grow_cube_android.html
 
 ## Prototype contains
 ### Gather
