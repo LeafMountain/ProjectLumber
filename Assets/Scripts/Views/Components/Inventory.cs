@@ -15,6 +15,17 @@ public class Inventory : MonoBehaviour {
 	[SerializeField]
 	private Transform[] storePositions;
 
+	public bool Full { 
+		get{
+			for (int i = 0; i < InventorySlots; i++){
+				if(storeables[i] == null){
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+
 	private void Awake(){
 		storeables = new Storeable[InventorySlots];
 	}
@@ -57,7 +68,7 @@ public class Inventory : MonoBehaviour {
 		return null;
 	}
 
-	public Item FindItemOfType(){
+	public Storeable FindItemOfType(){
 		return null;
 	}
 }

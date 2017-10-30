@@ -16,4 +16,19 @@ public class Selectable : MonoBehaviour {
 	public void DeSelect(){
 		deselected.Invoke();
 	}
+
+	public void OnRightClick(CommandModel command){
+		ICommandListener[] commandListeners = GetComponents<ICommandListener>();
+
+		GetComponent<UnitController>().NewCommand(command);
+
+		// for (int i = 0; i < commandListeners.Length; i++)
+		// {
+		// 	commandListeners[i].CommandRequested(command);
+		// }
+	}
+
+	public void OnShiftRightClick(CommandModel command) {
+		GetComponent<UnitController>().AddCommand(command);		
+	}
 }

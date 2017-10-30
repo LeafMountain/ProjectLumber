@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MouseController : ControllerElement {
 
-	// private static MouseController instance;
-
 	private Ray MouseRay{
 		get{
 			return Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,7 +45,7 @@ public class MouseController : ControllerElement {
 
 	private void RightClick(RaycastHit mouseHit){
 		if(Input.GetMouseButtonDown(1)){
-			App.Controller.Selection.CommandSelection(mouseHit);
+			App.Controller.Selection.CommandSelection(mouseHit, Input.GetKey(KeyCode.LeftShift));
 		}
 	}
 }

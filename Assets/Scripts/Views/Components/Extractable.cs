@@ -9,20 +9,22 @@ public class Extractable : MonoBehaviour {
 	private int extractTime;
 
 	private Inventory inventory;
-	private Inventory extractorInventory;
+	private Gatherer gatherer;
 
 	public void Start(){
 		inventory = GetComponent<Inventory>();
 	}
 
-	public void Extract(Inventory extractorInventory){
-		this.extractorInventory = extractorInventory;
+	public void Extract(Gatherer gatherer){
+		this.gatherer = gatherer;
 		StartCoroutine("_Extract");
 	}
 
 	IEnumerable _Extract(){
 		yield return new WaitForSeconds(extractTime);
-		extractorInventory.DepositItem(inventory.WithdrawItem());
+		
+		
+		gatherer.Gather(inventory.WithdrawItem());
 	}
 
 	public void Interact(){

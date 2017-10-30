@@ -29,10 +29,19 @@ public class SelectionController : ControllerElement {
 		return App.Model.Selection.GetSelection();
 	}
 
-	public void CommandSelection(RaycastHit hit){
-		for (int i = 0; i < App.Model.Selection.GetCommandListeners().Count; i++)
+	public void CommandSelection(RaycastHit hit, bool keepCurrentCommands = true){
+		CommandModel command = new CommandModel(hit.point, hit.transform.GetComponent<Interactable>());
+		
+		for (int j = 0; j < App.Model.Selection.GetSelection().Count; j++)
 		{
-			App.Model.Selection.GetCommandListeners()[i].RightClicked(hit);
+			if(keepCurrentCommands){
+				App.Model.Selection.GetSelection()[j].OnShiftRightClick(command);
+			}
+			else
+			{
+				App.Model.Selection.GetSelection()[j].OnRightClick(command);
+			}		
 		}
 	}
 }
+
