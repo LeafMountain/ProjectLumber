@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114397144462247896}
   - component: {fileID: 114497671761683318}
   - component: {fileID: 114220196064598310}
+  - component: {fileID: 114037229768937334}
   m_Layer: 0
   m_Name: mod_char_skeleton
   m_TagString: Untagged
@@ -211,6 +212,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114037229768937334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095638358044972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e20b4c0f0987d4185c96ca8a25969f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114076612427784102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 114245579205410034}
-  gatherer: {fileID: 0}
+  gatherer: {fileID: 114037229768937334}
   mover: {fileID: 114358234226971550}
 --- !u!114 &114245579205410034
 MonoBehaviour:

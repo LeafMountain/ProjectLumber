@@ -1,4 +1,4 @@
 ﻿public interface ICommandListener {
 
-	void CommandRequested(CommandModel command);
+	void CommandRequested(Command command);
 }
