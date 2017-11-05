@@ -76,54 +76,54 @@ Shader "Custom/Outline Shader"{
 
 		}
 
-		Pass{
-			Name "SILHOUETTE"
-			Tags { "LightMode" = "Always" }
-			Cull Off
-			ZWrite Off
-			ZTest Always
-			ColorMask RGB // alpha not used
+		// Pass{
+		// 	Name "SILHOUETTE"
+		// 	Tags { "LightMode" = "Always" }
+		// 	Cull Off
+		// 	ZWrite Off
+		// 	ZTest Always
+		// 	ColorMask RGB // alpha not used
 
-			// you can choose what kind of blending mode you want for the outline
-			Blend SrcAlpha OneMinusSrcAlpha // Normal
-			//Blend One One // Additive
-			//Blend One OneMinusDstColor // Soft Additive
-			//Blend DstColor Zero // Multiplicative
-			//Blend DstColor SrcColor // 2x Multiplicative
+		// 	// you can choose what kind of blending mode you want for the outline
+		// 	Blend SrcAlpha OneMinusSrcAlpha // Normal
+		// 	//Blend One One // Additive
+		// 	//Blend One OneMinusDstColor // Soft Additive
+		// 	//Blend DstColor Zero // Multiplicative
+		// 	//Blend DstColor SrcColor // 2x Multiplicative
 
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
+		// 	CGPROGRAM
+		// 	#pragma vertex vert
+		// 	#pragma fragment frag
 
-			struct appdata {
-				float4 vertex : POSITION;
-				float3 normal : NORMAL;
-			};
+		// 	struct appdata {
+		// 		float4 vertex : POSITION;
+		// 		float3 normal : NORMAL;
+		// 	};
 
-			struct v2f {
-				float4 pos : SV_POSITION;
-				float3 normal : NORMAL;
-			};
+		// 	struct v2f {
+		// 		float4 pos : SV_POSITION;
+		// 		float3 normal : NORMAL;
+		// 	};
 
-			float4 _SilhouetteColor;
+		// 	float4 _SilhouetteColor;
 
-			//Vertex to fragment
-			v2f vert(appdata v){
-				// v.vertex.xyz *= _OutlineWidth;
+		// 	//Vertex to fragment
+		// 	v2f vert(appdata v){
+		// 		// v.vertex.xyz *= _OutlineWidth;
 
-				v2f o;
-				//Transform to worldspace
-				o.pos = UnityObjectToClipPos(v.vertex);
-				return o;
-			}
+		// 		v2f o;
+		// 		//Transform to worldspace
+		// 		o.pos = UnityObjectToClipPos(v.vertex);
+		// 		return o;
+		// 	}
 
-			half4 frag(v2f i) : COLOR{
-				return _SilhouetteColor;
-			}
+		// 	half4 frag(v2f i) : COLOR{
+		// 		return _SilhouetteColor;
+		// 	}
 
 
-			ENDCG
-		}
+		// 	ENDCG
+		// }
 
 		//Not mine
 		Pass{
@@ -168,7 +168,10 @@ Shader "Custom/Outline Shader"{
 					UNITY_APPLY_FOG(i.fogCoord, col);
 					return col;
 				}
-				ENDCG
+			ENDCG
 		}
 	}
+
+	Fallback "Diffuse"
+	
 }

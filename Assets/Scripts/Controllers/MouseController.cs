@@ -25,7 +25,7 @@ public class MouseController : ControllerElement {
 	}
 
 	private Selectable LeftClick(RaycastHit mouseHit){
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(0) && mouseHit.transform != null){
 			//Keep selection if shift is pressed
 			if(!Input.GetKey(KeyCode.LeftShift)){
 				App.Controller.Selection.ClearSelection();
@@ -50,7 +50,7 @@ public class MouseController : ControllerElement {
 	}
 
 	private void RightClick(RaycastHit mouseHit){
-		if(Input.GetMouseButtonDown(1)){
+		if(Input.GetMouseButtonDown(1) && mouseHit.transform != null){
 			App.Controller.Selection.CommandSelection(mouseHit, Input.GetKey(KeyCode.LeftShift));
 		}
 	}
