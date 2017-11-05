@@ -30,12 +30,18 @@ public class MouseController : ControllerElement {
 			if(!Input.GetKey(KeyCode.LeftShift)){
 				App.Controller.Selection.ClearSelection();
 			}
-			
-			Selectable selectableObject = mouseHit.transform.GetComponent<Selectable>();
 
-			if(selectableObject){
-				App.Controller.Selection.AddSelection(selectableObject);
+			Selectable selectableObject = null;
+			
+			if(mouseHit.transform){
+				selectableObject = mouseHit.transform.GetComponent<Selectable>();
+
+				if(selectableObject){
+					App.Controller.Selection.AddSelection(selectableObject);
 			}
+
+			}
+			
 			return selectableObject;
 			
 		}
