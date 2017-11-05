@@ -30,7 +30,7 @@ public class SelectionController : ControllerElement {
 	}
 
 	public void CommandSelection(RaycastHit hit, bool keepCurrentCommands = true){
-		Command command = new Command(hit.point, hit.transform.GetComponent<Interactable>());
+		CommandModel command = new CommandModel(hit.point, hit.transform.GetComponent<Interactable>());
 		
 		for (int j = 0; j < App.Model.Selection.GetSelection().Count; j++)
 		{

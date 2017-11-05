@@ -11,7 +11,7 @@ public class Interactor : MonoBehaviour, ICommandListener {
 		StartCoroutine("Interact");
 	}
 
-	public void CommandRequested(Command command){		
+	public void CommandRequested(CommandModel command){		
 		if(command.Interactable){
 			InteractWith(command.Interactable);
 		}

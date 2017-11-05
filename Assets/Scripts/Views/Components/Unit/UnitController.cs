@@ -7,9 +7,7 @@ using UnityEngine.Events;
 public class UnitController : MonoBehaviour {
 
 	private IUnitState currentState;
-	// public List<Command> commandQueue = new List<Command>();
-	private CommandController commandController;
-	public CommandController CommandController { get { return commandController; }}
+	public List<CommandModel> commandQueue = new List<CommandModel>();
 
 	public Inventory inventory;
 	public Gatherer gatherer;
@@ -21,10 +19,7 @@ public class UnitController : MonoBehaviour {
 		}
 		currentState = newState;
 		currentState.EnterState();
-	}
-
-	private void Awake(){
-		commandController = new CommandController(this);
+		// Debug.Log(currentState);
 	}
 
 	private void Start(){
@@ -35,23 +30,35 @@ public class UnitController : MonoBehaviour {
 		currentState.Update();
 	}
 
-	public void NextCommand(){
-		CommandController.CommandDone();
-		Command(CommandController.CurrentCommand);
+	public void AddCommand(CommandModel command){
+		commandQueue.Add(command);
 	}
 
-	private void Command(Command command){
-		if(command.Interactable){
-			Extractable extractable = command.Interactable.GetComponent<Extractable>();
+	public void NewCommand(CommandModel command){
+		commandQueue.Clear();
+		if(currentState.GetType() != typeof(UnitIdleState)){
+			ChangeState(new UnitIdleState());
+		}
+		AddCommand(command);
+		NextCommand();
+	}
 
-			if(gatherer && extractable){
-				ChangeState(new UnitGatherState(this, gatherer, extractable));
-			}
+	public void NextCommand(){
+		if(commandQueue != null && commandQueue.Count > 0){
+			CommandModel command = commandQueue[0];			
+			commandQueue.RemoveAt(0);			
+
+			Command(command);			
 		}
 		else{
-			if(mover != null){
-				ChangeState(new UnitMoveState(this, mover, command.Position));
-			}	
+			ChangeState(new UnitIdleState());
 		}
+	}
+
+	private void Command(CommandModel command){
+		if(mover != null){
+			ChangeState(new UnitMoveState(this, mover, command.Position));
+		}		
+
 	}
 }

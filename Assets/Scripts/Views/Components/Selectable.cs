@@ -17,12 +17,10 @@ public class Selectable : MonoBehaviour {
 		deselected.Invoke();
 	}
 
-	public void OnRightClick(Command command){
-		// ICommandListener[] commandListeners = GetComponents<ICommandListener>();
+	public void OnRightClick(CommandModel command){
+		ICommandListener[] commandListeners = GetComponents<ICommandListener>();
 
-		GetComponent<UnitController>().CommandController.ClearCommandQueue();
-		GetComponent<UnitController>().CommandController.AddCommand(command);
-		
+		GetComponent<UnitController>().NewCommand(command);
 
 		// for (int i = 0; i < commandListeners.Length; i++)
 		// {
@@ -30,7 +28,7 @@ public class Selectable : MonoBehaviour {
 		// }
 	}
 
-	public void OnShiftRightClick(Command command) {
-		GetComponent<UnitController>().CommandController.AddCommand(command);
+	public void OnShiftRightClick(CommandModel command) {
+		GetComponent<UnitController>().AddCommand(command);		
 	}
 }
