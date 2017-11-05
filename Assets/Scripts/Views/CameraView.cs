@@ -12,6 +12,14 @@ public class CameraView : MonoBehaviour {
 	[SerializeField]
 	private float rotationSpeed = 1;
 
+	private Vector3 LookPosition {
+		get {
+			RaycastHit hit;
+			Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity);
+			return hit.point;
+		}
+	}
+
 	void Update () {
 		Move(MoveDirection(), speed);
 		Zoom(Scroll(), zoomSpeed);
@@ -19,7 +27,18 @@ public class CameraView : MonoBehaviour {
 	}
 
 	private void Move(Vector3 moveDirection, float speed){
-		transform.Translate(moveDirection * speed, Space.World);
+		Vector3 rightMoveDir = new Vector3(moveDirection.x, 0, 0);
+		Vector3 forwardMoveDir = moveDirection.z * new Vector3(transform.forward.x, 0, transform.forward.z);
+
+		transform.Translate(rightMoveDir * speed, Space.Self);
+		transform.Translate(forwardMoveDir * speed, Space.World);
+
+
+		// transform.position += new Vector3(transform.forward.x * moveDirection.z, 0, transform.forward.z * moveDirection.x) * speed;
+
+		// Debug.Log(transform.forward  + " " + (Vector3.forward + forwardMoveDir).normalized);
+		
+
 	}
 
 	private void Zoom(float amount, float speed){
@@ -27,10 +46,7 @@ public class CameraView : MonoBehaviour {
 	}
 
 	private void Rotate(float amount, float speed){
-		RaycastHit hit;
-		Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity);
-
-		transform.RotateAround(hit.point, Vector3.up, amount * speed);
+		transform.RotateAround(LookPosition, Vector3.up, amount * speed);
 	}
 
 	private Vector3 MoveDirection(){
