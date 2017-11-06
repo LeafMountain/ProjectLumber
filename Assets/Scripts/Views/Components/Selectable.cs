@@ -6,10 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider))]
 public class Selectable : MonoBehaviour {
 
-	public UnityEvent selected;
-	public UnityEvent deselected;
-
 	private bool _selected;
+	public Shader outlineShader;
+	private Shader originalShader;
 
 	public Color notSelectedColor;
 	public Color hoverColor;
@@ -24,22 +23,25 @@ public class Selectable : MonoBehaviour {
 	public float outlineWidthHover = 0.1f;
 	
 
-	private Renderer renderer;
+	private Renderer _renderer;
 	private MaterialPropertyBlock _propBlock;
 
 	void Start(){
-		renderer = GetComponent<Renderer>();
-		if(!renderer){
-			renderer = GetComponentInChildren<Renderer>();
+		_renderer = GetComponent<Renderer>();
+		if(!_renderer){
+			_renderer = GetComponentInChildren<Renderer>();
 
-			if(!renderer){
+			if(!_renderer){
 				Debug.LogError("Missing outline shader");
 				this.enabled = false;
 			}
+		} else {
+			originalShader = _renderer.material.shader;
+			_renderer.material.shader = outlineShader;
 		}
 
 		_propBlock = new MaterialPropertyBlock();
-		renderer.GetPropertyBlock(_propBlock);		
+		_renderer.GetPropertyBlock(_propBlock);	
 	}
 
 	public void Select(){
@@ -47,7 +49,6 @@ public class Selectable : MonoBehaviour {
 		_selected = true;
 
 		ChangeOutlineColor(currentColor);
-		selected.Invoke();
 	}
 
 	public void DeSelect(){
@@ -55,18 +56,14 @@ public class Selectable : MonoBehaviour {
 		_selected = false;
 
 		ChangeOutlineColor(currentColor);
-		deselected.Invoke();
 	}
 
 	public void OnRightClick(CommandModel command){
 		ICommandListener[] commandListeners = GetComponents<ICommandListener>();
 
-		GetComponent<UnitController>().NewCommand(command);
-
-		// for (int i = 0; i < commandListeners.Length; i++)
-		// {
-		// 	commandListeners[i].CommandRequested(command);
-		// }
+		if(GetComponent<UnitController>()){
+			GetComponent<UnitController>().NewCommand(command);
+		}
 	}
 
 	public void OnShiftRightClick(CommandModel command) {
@@ -75,12 +72,12 @@ public class Selectable : MonoBehaviour {
 
 	private void ChangeOutlineColor(Color color){
 		_propBlock.SetColor("_OutlineColor", color);
-		renderer.SetPropertyBlock(_propBlock);		
+		_renderer.SetPropertyBlock(_propBlock);		
 	}
 
 	private void ChangeOutlineWidth(float width){
 		_propBlock.SetFloat("_OutlineWidth", width);
-		renderer.SetPropertyBlock(_propBlock);
+		_renderer.SetPropertyBlock(_propBlock);
 	}
 
 	private void OnMouseEnter(){

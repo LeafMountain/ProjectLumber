@@ -193,16 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f79663200ed19448bd74df91a2d62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  deselected:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  outlineShader: {fileID: 4800000, guid: c3fb0bb9b0f20db4caa542a8d3d9c034, type: 3}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   hoverColor: {r: 0, g: 0.75172424, b: 1, a: 1}
   selectedColor: {r: 1, g: 0, b: 0, a: 1}
