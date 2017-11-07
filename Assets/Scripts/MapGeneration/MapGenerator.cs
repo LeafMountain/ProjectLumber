@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour {
 	public Noise.NormalizeMode normalizeMode;
 
 	//Its really 240. I decrease by 1 later
-	public const int mapChunkSize = 241;
+	public const int mapChunkSize = 121;
 	//Must be a factor of mapChuckSize
 	[Range(0,6)]
 	public int editorPreviewLOD;

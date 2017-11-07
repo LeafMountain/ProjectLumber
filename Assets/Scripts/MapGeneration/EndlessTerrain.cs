@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EndlessTerrain : MonoBehaviour {
 
@@ -73,9 +74,13 @@ public class EndlessTerrain : MonoBehaviour {
 
 		MeshRenderer meshRenderer;
 		MeshFilter meshFilter;
+		MeshCollider meshCollider;
+		NavMeshSurface navMeshSurface;
+		bool navMeshBaked = false;	
 
 		LODInfo[] detailLevels;
 		LODMesh[] lodMeshes;
+		LODMesh collisionMesh;
 
 		MapData mapData;
 		bool mapDataRecieved;
@@ -91,16 +96,24 @@ public class EndlessTerrain : MonoBehaviour {
 			meshObject = new GameObject("Terrain Chunk");
 			meshRenderer = meshObject.AddComponent<MeshRenderer>();
 			meshFilter = meshObject.AddComponent<MeshFilter>();
+			meshCollider = meshObject.AddComponent<MeshCollider>();
+			navMeshSurface = meshObject.AddComponent<NavMeshSurface>();
+
+
 			meshRenderer.material = material;
 
 			meshObject.transform.position = positionV3 * scale;
 			meshObject.transform.SetParent(parent);	
-			meshObject.transform.localScale = Vector3.one * scale;	
+			meshObject.transform.localScale = Vector3.one * scale;
+
 			SetVisible(false);
 
 			lodMeshes = new LODMesh[detailLevels.Length];
 			for (int i = 0; i < detailLevels.Length; i++){
 				lodMeshes[i] = new LODMesh(detailLevels[i].lod, UpdateTerrainChunk);
+				if(detailLevels[i].useForCollider){
+					collisionMesh = lodMeshes[i];
+				}
 			}
 
 			mapGenerator.RequestMapData(position, OnMapDataRecieved);
@@ -141,6 +154,18 @@ public class EndlessTerrain : MonoBehaviour {
 						}
 						else if(!lodMesh.hasRequestedMesh){
 							lodMesh.RequestMesh(mapData);
+						}
+					}
+
+					if(lodIndex == 0) {
+						if(collisionMesh.hasMesh){
+							meshCollider.sharedMesh = collisionMesh.mesh;
+							// if(!navMeshBaked){
+								navMeshSurface.BuildNavMesh();
+							// 	navMeshBaked = true;
+							// }
+						} else if(!collisionMesh.hasRequestedMesh){
+							collisionMesh.RequestMesh(mapData);
 						}
 					}
 
@@ -190,5 +215,6 @@ public class EndlessTerrain : MonoBehaviour {
 	public struct LODInfo {
 		public int lod;
 		public float visibleDistanceThreshold;
+		public bool useForCollider;
 	}
 }
