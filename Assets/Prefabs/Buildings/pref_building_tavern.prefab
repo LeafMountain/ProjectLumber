@@ -15,12 +15,13 @@ GameObject:
   - component: {fileID: 208138704928293268}
   - component: {fileID: 1587051113309233023}
   - component: {fileID: -7205577665301991408}
+  - component: {fileID: -1115564521182157273}
   m_Layer: 0
   m_Name: pref_building_tavern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967287
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4134826942931000
 Transform:
@@ -96,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.6688676, y: 7.611708, z: 5.955872}
-  m_Center: {x: 0.25316978, y: 3.8049667, z: 0.91391253}
+  m_Size: {x: 7.6688676, y: 5.8430047, z: 4.537525}
+  m_Center: {x: 0.25316978, y: 2.920615, z: 0.2047391}
 --- !u!208 &208138704928293268
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -141,3 +142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Tavern
+  state: 0
+  navObstacle: {fileID: 208138704928293268}
+--- !u!114 &-1115564521182157273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862803060918982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10

@@ -244,8 +244,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.0000009536743, y: 0, z: 0.83398914}
-    m_Extent: {x: 0.00000009941914, y: 0.4736104, z: 0.8339883}
+    m_Center: {x: 0.0000014328859, y: -0.00000014901161, z: 0.8339877}
+    m_Extent: {x: 0, y: 0.47361052, z: 0.8339882}
   m_DirtyAABB: 0
 --- !u!1 &1370815585290310
 GameObject:
@@ -337,8 +337,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.0000019073486, y: 0, z: 0.83398736}
-    m_Extent: {x: 0.000000099419154, y: 0.4736104, z: 0.8339884}
+    m_Center: {x: 0.0000014328859, y: -0.00000014901161, z: 0.8339877}
+    m_Extent: {x: 0, y: 0.47361052, z: 0.8339882}
   m_DirtyAABB: 0
 --- !u!183 &183513610599626590
 Cloth:
@@ -738,8 +738,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000019073486, y: -0.8339882, z: -0.00000023841858}
-    m_Extent: {x: 0.4736119, y: 0.8339882, z: 0.000011847923}
+    m_Center: {x: -0.000001758337, y: -0.833988, z: 0.0000008181786}
+    m_Extent: {x: 0.47361094, y: 0.833988, z: 0.0000006385811}
   m_DirtyAABB: 0
 --- !u!1 &1447747303305852
 GameObject:
@@ -831,8 +831,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0.83398795}
-    m_Extent: {x: 0.00000009941914, y: 0.47361088, z: 0.8339883}
+    m_Center: {x: 0.0000014328859, y: -0.00000014901161, z: 0.8339877}
+    m_Extent: {x: 0, y: 0.47361052, z: 0.8339882}
   m_DirtyAABB: 0
 --- !u!183 &183939763799578794
 Cloth:
@@ -1232,8 +1232,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000022649765, y: -0.83398795, z: 0}
-    m_Extent: {x: 0.47361124, y: 0.83398795, z: 0.000009002786}
+    m_Center: {x: -0.000001758337, y: -0.833988, z: 0.00000081817865}
+    m_Extent: {x: 0.47361094, y: 0.833988, z: 0.000000638582}
   m_DirtyAABB: 0
 --- !u!1 &1568205572678402
 GameObject:
@@ -1325,8 +1325,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0.8339882}
-    m_Extent: {x: 0.00000009941914, y: 0.4736104, z: 0.8339883}
+    m_Center: {x: 0.0000014328859, y: -0.00000014901161, z: 0.8339877}
+    m_Extent: {x: 0, y: 0.47361052, z: 0.8339882}
   m_DirtyAABB: 0
 --- !u!183 &183025418063877624
 Cloth:
@@ -1888,8 +1888,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000011920929, y: -0.8339882, z: 0}
-    m_Extent: {x: 0.47361112, y: 0.8339882, z: 0.000014602063}
+    m_Center: {x: -0.000001758337, y: -0.833988, z: 0.00000081817944}
+    m_Extent: {x: 0.47361115, y: 0.833988, z: 0.00000075149734}
   m_DirtyAABB: 0
 --- !u!1 &1955047295761614
 GameObject:
@@ -1905,12 +1905,13 @@ GameObject:
   - component: {fileID: 65203320958176744}
   - component: {fileID: 208678525314214364}
   - component: {fileID: -2508275143002714677}
+  - component: {fileID: 8908399558407777085}
   m_Layer: 0
   m_Name: pref_building_town_hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967287
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4826010764761530
 Transform:
@@ -2026,3 +2027,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Town Hall
+  state: 0
+  navObstacle: {fileID: 208678525314214364}
+--- !u!114 &8908399558407777085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955047295761614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10

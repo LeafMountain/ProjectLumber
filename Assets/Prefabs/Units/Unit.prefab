@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8490150580507630124}
   - component: {fileID: 8490150580507630121}
   - component: {fileID: 2686523478957984970}
+  - component: {fileID: 7293251660612643666}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   navAgent: {fileID: 8490150580507630124}
   animator: {fileID: 8490150578939981326}
   inventory: {fileID: 2686523478957984970}
+  interactable: {fileID: 8490150580507630127}
 --- !u!114 &8490150580507630127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &7293251660612643666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490150580507630114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!1001 &8490150578949430126
 PrefabInstance:
   m_ObjectHideFlags: 0

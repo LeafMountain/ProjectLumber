@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 65133434686925378}
   - component: {fileID: 23099543649246038}
   - component: {fileID: 2431094024691349699}
+  - component: {fileID: 6403849908055239871}
+  - component: {fileID: 9727503960127986}
   m_Layer: 0
   m_Name: Lumber
   m_TagString: Untagged
@@ -108,3 +110,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf223d768911434e83a9f36932065f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6403849908055239871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970807921682726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162ced7b66bb7f148b29ef31543a5d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: 0
+  selected: 0
+--- !u!114 &9727503960127986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970807921682726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6740d9726a5be2f46ae771194cd86604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Lumber

@@ -119,6 +119,12 @@ public class Interactable : MonoBehaviour
         {
             return building.name;
         }
+
+        Item item = GetComponent<Item>();
+        if(item)
+        {
+            return item.name;
+        }
         return null;
     }
 }
