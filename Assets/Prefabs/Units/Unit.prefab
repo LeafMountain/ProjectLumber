@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8490150580507630127}
   - component: {fileID: 8490150580507630124}
   - component: {fileID: 8490150580507630121}
+  - component: {fileID: 2686523478957984970}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   name: Din Mamma
   navAgent: {fileID: 8490150580507630124}
   animator: {fileID: 8490150578939981326}
+  inventory: {fileID: 2686523478957984970}
 --- !u!114 &8490150580507630127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +102,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2686523478957984970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490150580507630114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e108c212c1a4ee04ab8f3e228db1dcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &8490150578949430126
 PrefabInstance:
   m_ObjectHideFlags: 0

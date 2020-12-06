@@ -113,6 +113,12 @@ public class Interactable : MonoBehaviour
         {
             return unit.name;
         }
+
+        Building building = GetComponent<Building>();
+        if(building)
+        {
+            return building.name;
+        }
         return null;
     }
 }
