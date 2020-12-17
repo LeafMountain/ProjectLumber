@@ -1,96 +1,260 @@
 fileFormatVersion: 2
 guid: bd8ad885a8b625645b18f9cd40d7d455
-timeCreated: 1494417190
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: elbow_LFT_01
-    100002: elbow_LFT_IK_01
-    100004: elbow_RGT_01
-    100006: elbow_RGT_IK_01
-    100008: fingers_LFT_01
-    100010: fingers_RGT_01
-    100012: hand_LFT_01
-    100014: hand_LFT_CONNECTOR
-    100016: hand_RGH_CONNECTOR
-    100018: hand_RGT_01
-    100020: head_CEN_01
-    100022: head_CEN_CONNECTOR
-    100024: hip_LFT_01
-    100026: hip_RGT_01
-    100028: knee_LFT_01
-    100030: knee_RGT_01
-    100032: //RootNode
-    100034: neck_CEN_01
-    100036: palm_LFT_01
-    100038: palm_RGT_01
-    100040: root_CEN
-    100042: shoulder_LFT_01
-    100044: shoulder_LFT_IK_01
-    100046: shoulder_RGT_01
-    100048: shoulder_RGT_IK_01
-    100050: spine_CEN_01
-    100052: spine_CEN_02
-    100054: spine_CEN_03
-    100056: thumb_LFT_01
-    100058: thumb_LFT_02
-    100060: thumb_RGT_01
-    100062: thumb_RGT_02
-    100064: toe_LFT_01
-    100066: toe_LFT_01 1
-    100068: toe_RGT_01
-    100070: toe_RGT_01 1
-    100072: wrist_LFT_01
-    100074: wrist_LFT_IK_01
-    100076: wrist_RGT_01
-    100078: wrist_RGT_IK_01
-    400000: elbow_LFT_01
-    400002: elbow_LFT_IK_01
-    400004: elbow_RGT_01
-    400006: elbow_RGT_IK_01
-    400008: fingers_LFT_01
-    400010: fingers_RGT_01
-    400012: hand_LFT_01
-    400014: hand_LFT_CONNECTOR
-    400016: hand_RGH_CONNECTOR
-    400018: hand_RGT_01
-    400020: head_CEN_01
-    400022: head_CEN_CONNECTOR
-    400024: hip_LFT_01
-    400026: hip_RGT_01
-    400028: knee_LFT_01
-    400030: knee_RGT_01
-    400032: //RootNode
-    400034: neck_CEN_01
-    400036: palm_LFT_01
-    400038: palm_RGT_01
-    400040: root_CEN
-    400042: shoulder_LFT_01
-    400044: shoulder_LFT_IK_01
-    400046: shoulder_RGT_01
-    400048: shoulder_RGT_IK_01
-    400050: spine_CEN_01
-    400052: spine_CEN_02
-    400054: spine_CEN_03
-    400056: thumb_LFT_01
-    400058: thumb_LFT_02
-    400060: thumb_RGT_01
-    400062: thumb_RGT_02
-    400064: toe_LFT_01
-    400066: toe_LFT_01 1
-    400068: toe_RGT_01
-    400070: toe_RGT_01 1
-    400072: wrist_LFT_01
-    400074: wrist_LFT_IK_01
-    400076: wrist_RGT_01
-    400078: wrist_RGT_IK_01
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: elbow_LFT_01
+  - first:
+      1: 100002
+    second: elbow_LFT_IK_01
+  - first:
+      1: 100004
+    second: elbow_RGT_01
+  - first:
+      1: 100006
+    second: elbow_RGT_IK_01
+  - first:
+      1: 100008
+    second: fingers_LFT_01
+  - first:
+      1: 100010
+    second: fingers_RGT_01
+  - first:
+      1: 100012
+    second: hand_LFT_01
+  - first:
+      1: 100014
+    second: hand_LFT_CONNECTOR
+  - first:
+      1: 100016
+    second: hand_RGH_CONNECTOR
+  - first:
+      1: 100018
+    second: hand_RGT_01
+  - first:
+      1: 100020
+    second: head_CEN_01
+  - first:
+      1: 100022
+    second: head_CEN_CONNECTOR
+  - first:
+      1: 100024
+    second: hip_LFT_01
+  - first:
+      1: 100026
+    second: hip_RGT_01
+  - first:
+      1: 100028
+    second: knee_LFT_01
+  - first:
+      1: 100030
+    second: knee_RGT_01
+  - first:
+      1: 100032
+    second: //RootNode
+  - first:
+      1: 100034
+    second: neck_CEN_01
+  - first:
+      1: 100036
+    second: palm_LFT_01
+  - first:
+      1: 100038
+    second: palm_RGT_01
+  - first:
+      1: 100040
+    second: root_CEN
+  - first:
+      1: 100042
+    second: shoulder_LFT_01
+  - first:
+      1: 100044
+    second: shoulder_LFT_IK_01
+  - first:
+      1: 100046
+    second: shoulder_RGT_01
+  - first:
+      1: 100048
+    second: shoulder_RGT_IK_01
+  - first:
+      1: 100050
+    second: spine_CEN_01
+  - first:
+      1: 100052
+    second: spine_CEN_02
+  - first:
+      1: 100054
+    second: spine_CEN_03
+  - first:
+      1: 100056
+    second: thumb_LFT_01
+  - first:
+      1: 100058
+    second: thumb_LFT_02
+  - first:
+      1: 100060
+    second: thumb_RGT_01
+  - first:
+      1: 100062
+    second: thumb_RGT_02
+  - first:
+      1: 100064
+    second: toe_LFT_01
+  - first:
+      1: 100066
+    second: toe_LFT_01 1
+  - first:
+      1: 100068
+    second: toe_RGT_01
+  - first:
+      1: 100070
+    second: toe_RGT_01 1
+  - first:
+      1: 100072
+    second: wrist_LFT_01
+  - first:
+      1: 100074
+    second: wrist_LFT_IK_01
+  - first:
+      1: 100076
+    second: wrist_RGT_01
+  - first:
+      1: 100078
+    second: wrist_RGT_IK_01
+  - first:
+      4: 400000
+    second: elbow_LFT_01
+  - first:
+      4: 400002
+    second: elbow_LFT_IK_01
+  - first:
+      4: 400004
+    second: elbow_RGT_01
+  - first:
+      4: 400006
+    second: elbow_RGT_IK_01
+  - first:
+      4: 400008
+    second: fingers_LFT_01
+  - first:
+      4: 400010
+    second: fingers_RGT_01
+  - first:
+      4: 400012
+    second: hand_LFT_01
+  - first:
+      4: 400014
+    second: hand_LFT_CONNECTOR
+  - first:
+      4: 400016
+    second: hand_RGH_CONNECTOR
+  - first:
+      4: 400018
+    second: hand_RGT_01
+  - first:
+      4: 400020
+    second: head_CEN_01
+  - first:
+      4: 400022
+    second: head_CEN_CONNECTOR
+  - first:
+      4: 400024
+    second: hip_LFT_01
+  - first:
+      4: 400026
+    second: hip_RGT_01
+  - first:
+      4: 400028
+    second: knee_LFT_01
+  - first:
+      4: 400030
+    second: knee_RGT_01
+  - first:
+      4: 400032
+    second: //RootNode
+  - first:
+      4: 400034
+    second: neck_CEN_01
+  - first:
+      4: 400036
+    second: palm_LFT_01
+  - first:
+      4: 400038
+    second: palm_RGT_01
+  - first:
+      4: 400040
+    second: root_CEN
+  - first:
+      4: 400042
+    second: shoulder_LFT_01
+  - first:
+      4: 400044
+    second: shoulder_LFT_IK_01
+  - first:
+      4: 400046
+    second: shoulder_RGT_01
+  - first:
+      4: 400048
+    second: shoulder_RGT_IK_01
+  - first:
+      4: 400050
+    second: spine_CEN_01
+  - first:
+      4: 400052
+    second: spine_CEN_02
+  - first:
+      4: 400054
+    second: spine_CEN_03
+  - first:
+      4: 400056
+    second: thumb_LFT_01
+  - first:
+      4: 400058
+    second: thumb_LFT_02
+  - first:
+      4: 400060
+    second: thumb_RGT_01
+  - first:
+      4: 400062
+    second: thumb_RGT_02
+  - first:
+      4: 400064
+    second: toe_LFT_01
+  - first:
+      4: 400066
+    second: toe_LFT_01 1
+  - first:
+      4: 400068
+    second: toe_RGT_01
+  - first:
+      4: 400070
+    second: toe_RGT_01 1
+  - first:
+      4: 400072
+    second: wrist_LFT_01
+  - first:
+      4: 400074
+    second: wrist_LFT_IK_01
+  - first:
+      4: 400076
+    second: wrist_RGT_01
+  - first:
+      4: 400078
+    second: wrist_RGT_IK_01
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -103,12 +267,15 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -116,28 +283,247 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: mod_char_skeleton@attack_1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root_CEN
+      parentName: mod_char_skeleton@attack_1(Clone)
+      position: {x: 0, y: 0.4333456, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hip_LFT_01
+      parentName: root_CEN
+      position: {x: -0.1483832, y: 0.007709322, z: 0.003355802}
+      rotation: {x: -0.0864624, y: 0.084390104, z: 0.69616884, w: 0.70763797}
+      scale: {x: 1, y: 1, z: 1}
+    - name: knee_LFT_01
+      parentName: hip_LFT_01
+      position: {x: -0.19759965, y: -4.3875936e-17, z: 0}
+      rotation: {x: 3.4477131e-15, y: -0.3448863, z: 9.763064e-15, w: 0.93864447}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toe_LFT_01
+      parentName: knee_LFT_01
+      position: {x: -0.20349103, y: -8.0711215e-17, z: 0}
+      rotation: {x: -0.12197109, y: 0.12197109, z: -0.6965078, w: 0.6965078}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toe_LFT_01 1
+      parentName: toe_LFT_01
+      position: {x: -0.00000008426999, y: -0.0014456677, z: 0.12954721}
+      rotation: {x: -0.057612486, y: 0.0028840003, z: 0.0077201137, w: 0.9983051}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine_CEN_01
+      parentName: root_CEN
+      position: {x: -0, y: 0.11623864, z: 0}
+      rotation: {x: 0, y: 0.0055174204, z: -0, w: 0.9999848}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine_CEN_02
+      parentName: spine_CEN_01
+      position: {x: -0, y: 0.12666667, z: 0}
+      rotation: {x: 0.07085333, y: -0, z: -0, w: 0.99748677}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine_CEN_03
+      parentName: spine_CEN_02
+      position: {x: -0, y: 0.31679952, z: 0}
+      rotation: {x: 0.043687735, y: 0.003564745, z: 0.00016246788, w: 0.9990389}
+      scale: {x: 1, y: 1, z: 1}
+    - name: neck_CEN_01
+      parentName: spine_CEN_03
+      position: {x: -0, y: 0.12666667, z: 0}
+      rotation: {x: -0.025006099, y: -0.0115553085, z: 0.00073536154, w: 0.99962026}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head_CEN_01
+      parentName: neck_CEN_01
+      position: {x: -0, y: 0.36455166, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head_CEN_CONNECTOR
+      parentName: head_CEN_01
+      position: {x: -0, y: 0.02, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder_RGT_01
+      parentName: spine_CEN_03
+      position: {x: 0.115246, y: 0.0058332244, z: 0}
+      rotation: {x: 0.18014763, y: -0.0040753274, z: -0.016093267, w: 0.98349947}
+      scale: {x: 1, y: 1, z: 1}
+    - name: elbow_RGT_01
+      parentName: shoulder_RGT_01
+      position: {x: 0.315808, y: 0.002388, z: 0}
+      rotation: {x: -0.01585643, y: 0.025658228, z: 0.013726316, w: 0.9994508}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wrist_RGT_01
+      parentName: elbow_RGT_01
+      position: {x: 0.159772, y: 0, z: 0.015046199}
+      rotation: {x: 0.5175265, y: 0.041566473, z: -0.09594486, w: 0.8492545}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand_RGT_01
+      parentName: wrist_RGT_01
+      position: {x: 0.07067027, y: 1.4210854e-16, z: -0.0084575415}
+      rotation: {x: 0.99889815, y: 2.873688e-18, z: 0.046930887, w: -6.116487e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb_RGT_01
+      parentName: hand_RGT_01
+      position: {x: 0.008750333, y: -0.032631435, z: -0.014760883}
+      rotation: {x: -0.0035911226, y: -0.09641329, z: -0.33445406, w: 0.9374604}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb_RGT_02
+      parentName: thumb_RGT_01
+      position: {x: 0.059861433, y: 0.00094999996, z: -3.074936e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: palm_RGT_01
+      parentName: hand_RGT_01
+      position: {x: 0.058351096, y: 1.4210854e-16, z: -3.538571e-17}
+      rotation: {x: 0, y: 0.17621928, z: -0, w: 0.9843509}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fingers_RGT_01
+      parentName: palm_RGT_01
+      position: {x: 0.063075, y: -0.000054, z: -3.238698e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand_RGH_CONNECTOR
+      parentName: hand_RGT_01
+      position: {x: 0.04605084, y: 0.0002867475, z: -0.027679376}
+      rotation: {x: 0.99964684, y: -0.00039019005, z: 0.023535587, w: -0.012333046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder_RGT_IK_01
+      parentName: spine_CEN_03
+      position: {x: 0.115246, y: 0.0058332244, z: 0}
+      rotation: {x: 0.15085891, y: -0.016140616, z: -0.570154, w: 0.80740666}
+      scale: {x: 1, y: 1, z: 1}
+    - name: elbow_RGT_IK_01
+      parentName: shoulder_RGT_IK_01
+      position: {x: 0.315808, y: 0.002388, z: 0}
+      rotation: {x: -0.0068493765, y: -0.33685198, z: -0.02510047, w: 0.9411981}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wrist_RGT_IK_01
+      parentName: elbow_RGT_IK_01
+      position: {x: 0.159772, y: 0, z: 0.015046199}
+      rotation: {x: 0, y: 0.046930887, z: -0, w: 0.99889815}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder_LFT_01
+      parentName: spine_CEN_03
+      position: {x: -0.11524552, y: 0.005832999, z: 0}
+      rotation: {x: 0.11275568, y: -0.0024065701, z: 0.017588476, w: 0.9934641}
+      scale: {x: 1, y: 1, z: 1}
+    - name: elbow_LFT_01
+      parentName: shoulder_LFT_01
+      position: {x: -0.3158086, y: 0.002388133, z: 0}
+      rotation: {x: -0.00053069054, y: -0.046892736, z: -0.0037771468, w: 0.99889266}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wrist_LFT_01
+      parentName: elbow_LFT_01
+      position: {x: -0.15977153, y: 0.000000033307803, z: 0.015046193}
+      rotation: {x: 0.4765505, y: 0.21436153, z: -0.037575256, w: 0.8517845}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand_LFT_01
+      parentName: wrist_LFT_01
+      position: {x: -0.07067, y: -0.00000033781572, z: -0.00846}
+      rotation: {x: -0.000008684631, y: 0.00000004431764, z: 0.0000002792898, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb_LFT_01
+      parentName: hand_LFT_01
+      position: {x: -0.02004, y: 0.03263, z: 0.052389998}
+      rotation: {x: -0.0178782, y: 0.01623374, z: -0.3245003, w: 0.9455773}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb_LFT_02
+      parentName: thumb_LFT_01
+      position: {x: -0.059862062, y: -0.00095019146, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: palm_LFT_01
+      parentName: hand_LFT_01
+      position: {x: -0.06307, y: 0, z: 0}
+      rotation: {x: 0, y: 0.58811706, z: -0, w: 0.80877584}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fingers_LFT_01
+      parentName: palm_LFT_01
+      position: {x: -0.06307492, y: 0.000053868156, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand_LFT_CONNECTOR
+      parentName: hand_LFT_01
+      position: {x: -0.044224348, y: 0.0000022157453, z: 0.026523812}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder_LFT_IK_01
+      parentName: spine_CEN_03
+      position: {x: -0.11524552, y: 0.005832999, z: 0}
+      rotation: {x: 0.09056246, y: 0.103942245, z: 0.562901, w: 0.81494594}
+      scale: {x: 1, y: 1, z: 1}
+    - name: elbow_LFT_IK_01
+      parentName: shoulder_LFT_IK_01
+      position: {x: -0.3158086, y: 0.002388133, z: 0}
+      rotation: {x: -0.00053069054, y: -0.046892736, z: -0.0037771468, w: 0.99889266}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wrist_LFT_IK_01
+      parentName: elbow_LFT_IK_01
+      position: {x: -0.15977153, y: 0.000000033307803, z: 0.015046193}
+      rotation: {x: 0.4765505, y: 0.21436153, z: -0.037575256, w: 0.8517845}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hip_RGT_01
+      parentName: root_CEN
+      position: {x: 0.14838299, y: 0.007709069, z: 0.0033558}
+      rotation: {x: -0.0840576, y: 0.08614161, z: 0.7077097, w: 0.69617593}
+      scale: {x: 1, y: 1, z: 1}
+    - name: knee_RGT_01
+      parentName: hip_RGT_01
+      position: {x: -0.197599, y: -3.5527136e-17, z: 5.551115e-19}
+      rotation: {x: -2.9912327e-17, y: -0.34488645, z: 1.6932496e-16, w: 0.9386444}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toe_RGT_01
+      parentName: knee_RGT_01
+      position: {x: -0.20349139, y: -5.3290704e-17, z: 0}
+      rotation: {x: -0.121970914, y: 0.121970914, z: -0.6965078, w: 0.6965078}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toe_RGT_01 1
+      parentName: toe_RGT_01
+      position: {x: -1.7763568e-17, y: -0.0014457101, z: 0.1295472}
+      rotation: {x: -0.05807752, y: -0.0029002575, z: -0.0077636624, w: 0.9982777}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -145,14 +531,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

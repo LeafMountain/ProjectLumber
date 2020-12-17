@@ -125,6 +125,7 @@ public class Interactable : MonoBehaviour
         {
             return item.name;
         }
-        return null;
+
+        return name;
     }
 }

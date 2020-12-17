@@ -35,42 +35,15 @@ public class Unit : MonoBehaviour, IRightClickInteraction
     {
         if(hit.transform)
         {
-            if(hit.transform.GetComponent<Storable>() is Storable storable)
+            if(hit.transform.GetComponent<IUnitInteractable>() is IUnitInteractable unitInteractable)
             {
-                yield return MoveToPosition(hit.point);
-                inventory.Deposit(storable);
-                currentHit = new RaycastHit();
+                yield return unitInteractable.DoInteraction(this);
             }
-            else if(hit.transform.GetComponent<Building>() is Building building)
-            {
-                yield return MoveToPosition(hit.point);
-                animator.SetTrigger("attackMelee");
-                yield return new WaitForSeconds(.5f);
-                building.GetComponent<Health>().Damage(-1, interactable);
-                yield return new WaitForSeconds(.2f);
-            }
-            // else if(hit.transform.GetComponent<Unit>() is Unit unit)
-            // {
-            //     yield return MoveToPosition(hit.point);
-            //     animator.SetTrigger("attackMelee");
-            //     unit.GetComponent<Health>().Damage(-1, interactable);
-            //     yield return new WaitForSeconds(1f);
-            // }
             else
             {
                 navAgent.SetDestination(hit.point);
                 currentHit = new RaycastHit();
             }
-        }
-    }
-
-    private IEnumerator MoveToPosition(Vector3 position)
-    {
-        navAgent.SetDestination(position);
-        yield return null;
-        while(navAgent.remainingDistance > navAgent.stoppingDistance)
-        {
-            yield return null;
         }
     }
 
@@ -89,5 +62,15 @@ public class Unit : MonoBehaviour, IRightClickInteraction
     private void LateUpdate()
     {
         animator.SetFloat("velocity", navAgent.velocity.magnitude);
+    }
+
+    public IEnumerator LookAt(Interactable interactable)
+    {
+        Vector3 lookRotation = interactable.transform.position - transform.position;
+        while (Vector3.Angle(transform.forward, lookRotation) > 5f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime * 10f);
+            yield return null;
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BuildMenu : UIElement
 {
@@ -114,7 +115,7 @@ public class BuildMenu : UIElement
 
     public void PlaceBuilding()
     {
-        placingBuilding.SetState(Building.State.Normal);
+        placingBuilding.transform.DOScaleY(.1f, .2f).SetEase(Ease.OutElastic);
         placingBuilding.transform.position = placementPosition;
         placingBuilding.transform.rotation = Quaternion.Euler(desiredRotation);
         placingBuilding = null;

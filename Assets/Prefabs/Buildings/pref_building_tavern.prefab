@@ -144,6 +144,11 @@ MonoBehaviour:
   name: Tavern
   state: 0
   navObstacle: {fileID: 208138704928293268}
+  recipe:
+  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
+  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
+  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
+  buildMaterials: []
 --- !u!114 &-1115564521182157273
 MonoBehaviour:
   m_ObjectHideFlags: 0

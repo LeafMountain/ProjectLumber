@@ -22,5 +22,16 @@ public class Health : MonoBehaviour
         {
             transform.DOPunchScale(Vector3.one * -.1f, .1f);
         }
+        UINotification.ShowNotification(GetComponent<Interactable>(), value.ToString());
+    }
+
+    public IEnumerator AttackInteraction(Unit unit)
+    {
+        yield return unit.navAgent.MoveToInteractable(GetComponent<Interactable>());
+        yield return unit.LookAt(GetComponent<Interactable>());
+        unit.animator.SetTrigger("attackMelee");
+        yield return new WaitForSeconds(.5f);
+        Damage(-1, unit.interactable);
+        yield return new WaitForSeconds(.2f);
     }
 }
