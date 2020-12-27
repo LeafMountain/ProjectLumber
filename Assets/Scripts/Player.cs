@@ -6,19 +6,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float scrollSpeed = 500f;
     public Camera camera;
 
-    void LateUpdate()
+    void Update()
     {
-
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(horizontal, 0, vertical).normalized * moveSpeed * Time.deltaTime);
 
-        if(BuildMenu.building == false)
+        if (BuildMenu.building == false)
         {
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            camera.transform.position += camera.transform.forward.normalized * -scroll;
+            float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
+            scrollDelta *= scrollSpeed;
+            scrollDelta *= Time.deltaTime;
+            camera.transform.position += camera.transform.forward.normalized * -scrollDelta;
         }
     }
 }

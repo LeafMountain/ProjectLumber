@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7580064674373096}
   - component: {fileID: 6205466392181970819}
   - component: {fileID: -97601503586631135}
+  - component: {fileID: 2325119123415894521}
   m_Layer: 0
   m_Name: Stockpile
   m_TagString: Untagged
@@ -104,6 +105,8 @@ MonoBehaviour:
   name: Stockpile
   state: 0
   navObstacle: {fileID: 6205466392181970819}
+  recipe: []
+  buildMaterials: []
 --- !u!208 &6205466392181970819
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -134,6 +137,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hover: 0
   selected: 0
+--- !u!114 &2325119123415894521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345871005921958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 0
+  maxHealth: 100
+  healthbar: {fileID: 0}
 --- !u!1 &16477879116612392
 GameObject:
   m_ObjectHideFlags: 0

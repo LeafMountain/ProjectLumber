@@ -4,5 +4,8 @@ using UnityEngine;
 
 public interface IUnitInteractable
 {
-    public IEnumerator DoInteraction(Unit unit);
+    IEnumerator DoInteraction(Unit unit);
+    bool IsEnabled();
+    string GetName();
+    Sprite GetIcon();
 }

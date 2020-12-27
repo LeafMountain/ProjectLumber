@@ -22,10 +22,10 @@ public class Inventory : MonoBehaviour, IUnitInteractable
     {
         for (int i = 0; i < storables.Length; i++)
         {
-            if(storables[i] == null)
+            if (storables[i] == null)
             {
                 storables[i] = storable;
-                if(storableSlots.Length > i)
+                if (storableSlots.Length > i)
                 {
                     storable.transform.SetParent(storableSlots[i]);
                     storable.transform.localPosition = Vector3.zero;
@@ -37,6 +37,17 @@ public class Inventory : MonoBehaviour, IUnitInteractable
                 }
                 storable.state = Storable.State.InInventory;
                 storable.currentInventory = this;
+
+                Item item = storable.GetComponent<Item>();
+                if (GameManager.Instance.items.ContainsKey(item.data) == false)
+                {
+                    GameManager.Instance.items.Add(item.data, new List<Item>());
+                }
+                else
+                {
+                    GameManager.Instance.items[item.data].Add(item);
+                }
+
                 return true;
             }
         }
@@ -47,13 +58,20 @@ public class Inventory : MonoBehaviour, IUnitInteractable
     {
         for (int i = 0; i < storables.Length; i++)
         {
-            if(storables[i] != null && storables[i] == storable)
+            if (storables[i] != null && storables[i] == storable)
             {
                 storables[i] = null;
                 storable.gameObject.SetActive(true);
                 storable.gameObject.transform.SetParent(null);
                 storable.state = Storable.State.Normal;
                 storable.currentInventory = null;
+
+                Item item = storable.GetComponent<Item>();
+                if (GameManager.Instance.items.ContainsKey(item.data))
+                {
+                    GameManager.Instance.items[item.data].Remove(item);
+                }
+
                 return storable;
             }
         }
@@ -64,7 +82,7 @@ public class Inventory : MonoBehaviour, IUnitInteractable
     {
         for (int i = 0; i < storables.Length; i++)
         {
-            if(storables[i] == null)
+            if (storables[i] == null)
             {
                 return false;
             }
@@ -74,18 +92,18 @@ public class Inventory : MonoBehaviour, IUnitInteractable
 
     public void Transfer(Inventory otherInventory)
     {
-        if(IsFull())
+        if (IsFull())
         {
             return;
         }
 
         for (int i = 0; i < otherInventory.storables.Length; i++)
         {
-            if(IsFull())
+            if (IsFull())
             {
                 return;
             }
-            if(otherInventory.storables[i] != null)
+            if (otherInventory.storables[i] != null)
             {
                 Storable storable = otherInventory.Withdraw(otherInventory.storables[i]);
                 Deposit(storable);
@@ -98,9 +116,9 @@ public class Inventory : MonoBehaviour, IUnitInteractable
         Inventory targetInventory = null;
         for (int i = 0; i < inventories.Count; i++)
         {
-            if (inventories[i].IsFull() == false && Inventory.inventories[i].GetComponent<Unit>() == false)
+            if (inventories[i].IsFull() == false && Inventory.inventories[i].GetComponent<Unit>() == false && Inventory.inventories[i].GetComponent<Building>().state == Building.State.Normal)
             {
-                yield return unit.navAgent.MoveToPosition(Inventory.inventories[i].transform.position);
+                yield return unit.navAgent.MoveToPositionSeq(Inventory.inventories[i].transform.position);
                 if (inventories[i].IsFull())
                 {
                     continue;
@@ -110,14 +128,14 @@ public class Inventory : MonoBehaviour, IUnitInteractable
             }
         }
 
-        if(targetInventory == null)
+        if (targetInventory == null)
         {
             yield return null;
             yield break;
         }
 
-        yield return unit.navAgent.MoveToPosition(targetInventory.transform.position);
-        if(targetInventory.IsFull())
+        yield return unit.navAgent.MoveToPositionSeq(targetInventory.transform.position);
+        if (targetInventory.IsFull())
         {
             // Failed... Try again?
         }
@@ -126,7 +144,7 @@ public class Inventory : MonoBehaviour, IUnitInteractable
 
     public IEnumerator DoInteraction(Unit unit)
     {
-        if(GetComponent<Unit>() == false && unit.inventory.GetCount() > 0)
+        if (GetComponent<Unit>() == false && unit.inventory.GetCount() > 0)
         {
             yield return StoreInteraction(unit);
         }
@@ -137,11 +155,26 @@ public class Inventory : MonoBehaviour, IUnitInteractable
         int count = 0;
         for (int i = 0; i < storableSlots.Length; i++)
         {
-            if(storableSlots != null)
+            if (storableSlots != null)
             {
                 count++;
             }
         }
         return count;
+    }
+
+    public bool IsEnabled()
+    {
+        return GetComponent<Building>().state == Building.State.Normal;
+    }
+
+    public string GetName()
+    {
+        return "Store";
+    }
+
+    public Sprite GetIcon()
+    {
+        return Resources.Load<Sprite>("Icons/Placeholders/Gift box");
     }
 }

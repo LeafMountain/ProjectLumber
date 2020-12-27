@@ -145,9 +145,9 @@ MonoBehaviour:
   state: 0
   navObstacle: {fileID: 208138704928293268}
   recipe:
-  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
-  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
-  - {fileID: 9727503960127986, guid: b083c3d3e9497d04e82e03336384d843, type: 3}
+  - {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}
+  - {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}
+  - {fileID: 11400000, guid: d4b80ef9c8b013e499184978173de438, type: 2}
   buildMaterials: []
 --- !u!114 &-1115564521182157273
 MonoBehaviour:
@@ -161,5 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   health: 0
-  maxHealth: 10
+  maxHealth: 100
+  healthbar: {fileID: 0}

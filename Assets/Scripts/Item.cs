@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public static List<Item> items = new List<Item>();
-    new public string name = "NO NAME ITEM";
+    public ItemData data;
 
-    private void Awake()
+    public static Item FindItem(ItemData item)
     {
-        items.Add(this);
-    }
-
-    private void OnDestroy()
-    {
-        items.Remove(this);
-    }
-
-    public static Item FindItem(Item item)
-    {
-        for (int i = 0; i < items.Count; i++)
+        if (GameManager.Instance.items.ContainsKey(item) == false)
         {
-            if(items[i].GetType() == item.GetType())
+            return null;
+        }
+
+        List<Item> items = GameManager.Instance.items[item];
+        if (items != null)
+        {
+            for (int i = 0; i < items.Count; i++)
             {
-                if(items[i].GetComponent<Storable>().state != Storable.State.InUse)
+                if (items[i].data == item)
                 {
-                    return items[i];
+                    if (items[i].GetComponent<Storable>().state != Storable.State.InUse)
+                    {
+                        return items[i];
+                    }
                 }
             }
         }

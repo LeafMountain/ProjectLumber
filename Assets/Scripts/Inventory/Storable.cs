@@ -16,14 +16,14 @@ public class Storable : MonoBehaviour, IUnitInteractable
 
     public IEnumerator PickUpInteraction(Unit unit)
     {
-        yield return unit.navAgent.MoveToInteractable(GetComponent<Interactable>());
+        yield return unit.navAgent.MoveToInteractableSeq(GetComponent<Interactable>());
         currentInventory?.Withdraw(this);
         unit.inventory.Deposit(this);
     }
 
     public void Withdraw()
     {
-        if(currentInventory)
+        if (currentInventory)
         {
             currentInventory.Deposit(this);
         }
@@ -32,5 +32,20 @@ public class Storable : MonoBehaviour, IUnitInteractable
     public IEnumerator DoInteraction(Unit unit)
     {
         yield return PickUpInteraction(unit);
+    }
+
+    public bool IsEnabled()
+    {
+        return true;
+    }
+
+    public string GetName()
+    {
+        return "Pick Up";
+    }
+
+    public Sprite GetIcon()
+    {
+        return null;
     }
 }

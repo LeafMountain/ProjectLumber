@@ -32,7 +32,7 @@ public class BuildMenu : UIElement
 
     public override void Open()
     {
-        while(spawnedButtons.Count > 0)
+        while (spawnedButtons.Count > 0)
         {
             Destroy(spawnedButtons[0]);
             spawnedButtons.RemoveAt(0);
@@ -52,7 +52,7 @@ public class BuildMenu : UIElement
     public override void Close()
     {
         base.Close();
-        if(placingBuilding)
+        if (placingBuilding)
         {
             Destroy(placingBuilding.gameObject);
         }
@@ -62,23 +62,23 @@ public class BuildMenu : UIElement
     protected override void Update()
     {
         base.Update();
-        if(topElement)
+        if (topElement)
         {
-            if(placingBuilding)
+            if (placingBuilding)
             {
-                if(Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Destroy(placingBuilding.gameObject);
                     BuildMenu.building = false;
                 }
-                else if(Input.GetMouseButtonDown(0))
+                else if (Input.GetMouseButtonDown(0))
                 {
                     PlaceBuilding();
                 }
-                else if(Input.GetAxis("Mouse ScrollWheel") != 0)
+                else if (Input.GetAxis("Mouse ScrollWheel") != 0)
                 {
                     float cooldown = .2f;
-                    if(Time.timeSinceLevelLoad - rotationTimeStamp > cooldown)
+                    if (Time.timeSinceLevelLoad - rotationTimeStamp > cooldown)
                     {
                         rotationTimeStamp = Time.timeSinceLevelLoad;
                         int direction = Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1;
@@ -88,7 +88,7 @@ public class BuildMenu : UIElement
                 else
                 {
                     RaycastHit hit;
-                    if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, placementLayer))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, placementLayer))
                     {
                         placementPosition = hit.point;
                         placementPosition.x = Mathf.Round(placementPosition.x);
@@ -104,12 +104,12 @@ public class BuildMenu : UIElement
     public void StartPlacingBuilding(Building building)
     {
         desiredRotation = Vector3.zero;
-        if(placingBuilding)
+        if (placingBuilding)
         {
             Destroy(placingBuilding.gameObject);
         }
         placingBuilding = Instantiate(building);
-        placingBuilding.SetState(Building.State.Building);
+        placingBuilding.SetState(Building.State.Placing);
         BuildMenu.building = true;
     }
 
@@ -118,6 +118,7 @@ public class BuildMenu : UIElement
         placingBuilding.transform.DOScaleY(.1f, .2f).SetEase(Ease.OutElastic);
         placingBuilding.transform.position = placementPosition;
         placingBuilding.transform.rotation = Quaternion.Euler(desiredRotation);
+        placingBuilding.SetState(Building.State.Building);
         placingBuilding = null;
         BuildMenu.building = false;
     }

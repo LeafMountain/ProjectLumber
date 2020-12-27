@@ -6,27 +6,28 @@ using UnityEngine;
 
 public class UISelectable : MonoBehaviour
 {
-    public TMP_Text nameText;
+    public TMP_Text[] nameText;
 
     private void Awake()
     {
-        Interactable.OnSelection += OnSelection;
-        Interactable.OnDeselection += OnDeselection;
+        InteractionSystem.OnUpdated += OnUpdated;
         gameObject.SetActive(false);
     }
 
-    private void OnSelection(Interactable interactable)
+    private void OnUpdated()
     {
-        nameText.SetText("Name: " + interactable.GetName());
-        gameObject.SetActive(true);
-    }
-
-    private void OnDeselection(Interactable interactable)
-    {
-        if(Interactable.currentSelection.Count == 0)
+        bool interactablesExists = InteractionSystem.Instance.interactables.Count > 0;
+        gameObject.SetActive(interactablesExists);
+        if (interactablesExists)
         {
-            gameObject.SetActive(false);
-            nameText.SetText(string.Empty);
+            for (int i = 0; i < nameText.Length; i++)
+            {
+                nameText[i].gameObject.SetActive(i < InteractionSystem.Instance.interactables.Count);
+                if (i < InteractionSystem.Instance.interactables.Count)
+                {
+                    nameText[i].SetText(InteractionSystem.Instance.interactables[i].GetName());
+                }
+            }
         }
     }
 }

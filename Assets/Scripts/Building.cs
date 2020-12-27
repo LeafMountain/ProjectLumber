@@ -10,14 +10,25 @@ public class Building : MonoBehaviour, IUnitInteractable
     {
         Normal = 0,
         Building = 1,
+        Placing = 2,
     }
 
     new public string name;
     public State state;
     public NavMeshObstacle navObstacle;
-    public Item[] recipe;
+    public ItemData[] recipe;
 
     public List<Item> buildMaterials = new List<Item>();
+
+    public ResourceNotification resourceNotification;
+
+    private void OnDestroy()
+    {
+        if (resourceNotification)
+        {
+            Destroy(resourceNotification.gameObject);
+        }
+    }
 
     public void SetState(State state)
     {
@@ -28,46 +39,61 @@ public class Building : MonoBehaviour, IUnitInteractable
                 navObstacle.enabled = true;
                 break;
             case State.Building:
-                GetComponentInChildren<Renderer>().material.color = Color.green;
-                navObstacle.enabled = false;
-                break;
+                {
+                    if (resourceNotification == null)
+                    {
+                        resourceNotification = UI.GetResourceNotification();
+                    }
+                    resourceNotification.Set(GetMissingIngredients());
+                    resourceNotification.objectTracker.target = transform;
+                    resourceNotification.gameObject.SetActive(true);
+                    GetComponentInChildren<Renderer>().material.color = Color.green;
+                    navObstacle.enabled = false;
+                    break;
+                }
         }
 
         this.state = state;
     }
 
-    public IEnumerator AttackInteraction(Unit unit)
+    public ItemData[] GetMissingIngredients()
     {
-        yield return unit.navAgent.MoveToPosition(transform.position);
-        unit.animator.SetTrigger("attackMelee");
-        yield return new WaitForSeconds(.5f);
-        GetComponent<Health>().Damage(-1, unit.interactable);
-        yield return new WaitForSeconds(.2f);
+        List<ItemData> missingMaterials = new List<ItemData>();
+        missingMaterials.AddRange(recipe);
+
+        for (int i = 0; i < buildMaterials.Count; i++)
+        {
+            int foundIndex = missingMaterials.FindIndex(x => x == buildMaterials[i].data);
+            if (foundIndex != -1)
+            {
+                missingMaterials.RemoveAt(foundIndex);
+            }
+        }
+
+        return missingMaterials.ToArray();
     }
 
-    public IEnumerator BuildInteraction(Unit unit)
+    public IEnumerator DoInteraction(Unit unit)
     {
-        if(state != State.Building)
+        if (state != State.Building)
         {
             yield return null;
             yield break;
         }
 
-        if(buildMaterials.Count < recipe.Length)
+        yield return unit.navAgent.MoveToInteractableSeq(GetComponent<Interactable>());
+
+        if (buildMaterials.Count < recipe.Length)
         {
             for (int i = 0; i < recipe.Length; i++)
             {
-                if(buildMaterials.IndexOf(recipe[i]) != -1)
-                {
-                    continue;
-                }
                 Item foundItem = Item.FindItem(recipe[i]);
-                if(foundItem != null)
+                if (foundItem != null)
                 {
                     Storable storable = foundItem.GetComponent<Storable>();
                     yield return storable.PickUpInteraction(unit);
-                    yield return unit.navAgent.MoveToInteractable(GetComponent<Interactable>());
-                    if(state != State.Normal)
+                    yield return unit.navAgent.MoveToInteractableSeq(GetComponent<Interactable>());
+                    if (state != State.Normal)
                     {
                         unit.inventory.Withdraw(storable);
                         AddBuildMaterial(foundItem);
@@ -77,38 +103,57 @@ public class Building : MonoBehaviour, IUnitInteractable
                 }
             }
         }
+        else
+        {
+            CompleteBuilding();
+        }
         yield return null;
         yield break;
     }
 
-    public IEnumerator DoInteraction(Unit unit)
+    public void AddBuildMaterial(Item item)
     {
-        if(state == State.Building)
+        if (item != null)
         {
-            yield return BuildInteraction(unit);
+            item.GetComponent<Storable>().state = Storable.State.InUse;
+            buildMaterials.Add(item);
+            item.gameObject.SetActive(false);
         }
-        else if(state == State.Normal)
+
+        float yScale = (float)buildMaterials.Count / (recipe.Length + 1f);
+        Tweener buildTweener = transform.DOScaleY(yScale, 1f).SetEase(Ease.InOutElastic);
+        resourceNotification.Set(GetMissingIngredients());
+
+        if (buildMaterials.Count == recipe.Length)
         {
-            yield return GetComponent<Health>().AttackInteraction(unit);
+            state = State.Normal;
+            buildTweener.onComplete += () =>
+            {
+                CompleteBuilding();
+            };
         }
     }
 
-    public void AddBuildMaterial(Item item)
+    public void CompleteBuilding()
     {
-        item.GetComponent<Storable>().state = Storable.State.InUse;
-        buildMaterials.Add(item);
-        item.gameObject.SetActive(false);
+        SetState(State.Normal);
+        transform.DOScale(1f, 1f).SetEase(Ease.InOutElastic);
+        UI.ShowNotification(GetComponent<Interactable>(), $"{name} Complete!");
+        resourceNotification.gameObject.SetActive(false);
+    }
 
-        float yScale = (float)buildMaterials.Count / (recipe.Length + 1f);
-        transform.DOScaleY(yScale, 1f).SetEase(Ease.InOutElastic).onComplete += () =>
-        {
-            if (buildMaterials.Count == recipe.Length)
-            {
-                transform.DOScale(1f, 1f).SetEase(Ease.InOutElastic);
-                // Building done!
-                SetState(State.Normal);
-                UINotification.ShowNotification(GetComponent<Interactable>(), $"{name} Complete!");
-            }
-        };
+    public bool IsEnabled()
+    {
+        return state == State.Building;
+    }
+
+    public string GetName()
+    {
+        return "Build";
+    }
+
+    public Sprite GetIcon()
+    {
+        return Resources.Load<Sprite>("Icons/Placeholders/hammer");
     }
 }

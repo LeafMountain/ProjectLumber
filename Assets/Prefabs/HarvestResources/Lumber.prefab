@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf223d768911434e83a9f36932065f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  currentInventory: {fileID: 0}
 --- !u!114 &6403849908055239871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,4 +138,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6740d9726a5be2f46ae771194cd86604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Lumber
+  data: {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}

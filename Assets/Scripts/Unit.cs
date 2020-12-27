@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Unit : MonoBehaviour, IRightClickInteraction
+public class Unit : MonoBehaviour, IRightClickInteraction, IInteractionReceiver
 {
     new public string name = "UNIT (MISSING NAME)";
     public NavMeshAgent navAgent;
@@ -17,6 +17,8 @@ public class Unit : MonoBehaviour, IRightClickInteraction
     public RaycastHit currentHit;
 
     private IEnumerator ticker;
+
+    public IUnitInteractable currentInteraction;
 
     private void Start()
     {
@@ -31,31 +33,15 @@ public class Unit : MonoBehaviour, IRightClickInteraction
         StartCoroutine(ticker);
     }
 
-    public IEnumerator DoInteractionSequence(RaycastHit hit)
-    {
-        if(hit.transform)
-        {
-            if(hit.transform.GetComponent<IUnitInteractable>() is IUnitInteractable unitInteractable)
-            {
-                yield return unitInteractable.DoInteraction(this);
-            }
-            else
-            {
-                navAgent.SetDestination(hit.point);
-                currentHit = new RaycastHit();
-            }
-        }
-    }
-
     public IEnumerator Tick()
     {
-        while(true)
+        while (true)
         {
-            if(currentHit.transform)
+            if (currentInteraction != null)
             {
-                yield return DoInteractionSequence(currentHit);
+                yield return currentInteraction.DoInteraction(this);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.1f);
         }
     }
 
@@ -72,5 +58,10 @@ public class Unit : MonoBehaviour, IRightClickInteraction
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookRotation), Time.deltaTime * 10f);
             yield return null;
         }
+    }
+
+    public void ReceiveInteraction(IUnitInteractable interaction)
+    {
+        currentInteraction = interaction;
     }
 }

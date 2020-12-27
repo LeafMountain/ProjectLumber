@@ -1902,10 +1902,10 @@ GameObject:
   - component: {fileID: 4826010764761530}
   - component: {fileID: 33894928582182852}
   - component: {fileID: 23464056949200580}
-  - component: {fileID: 65203320958176744}
   - component: {fileID: 208678525314214364}
   - component: {fileID: -2508275143002714677}
   - component: {fileID: 8908399558407777085}
+  - component: {fileID: 5282669238160992789}
   m_Layer: 0
   m_Name: pref_building_town_hall
   m_TagString: Untagged
@@ -1985,19 +1985,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65203320958176744
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955047295761614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8, y: 0.05, z: 7}
-  m_Center: {x: 0, y: 0, z: 0.0008842945}
 --- !u!208 &208678525314214364
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2029,6 +2016,8 @@ MonoBehaviour:
   name: Town Hall
   state: 0
   navObstacle: {fileID: 208678525314214364}
+  recipe: []
+  buildMaterials: []
 --- !u!114 &8908399558407777085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2041,5 +2030,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6fc308ca76c254ba0df5c3139db0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   health: 0
-  maxHealth: 10
+  maxHealth: 100
+  healthbar: {fileID: 0}
+--- !u!64 &5282669238160992789
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955047295761614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ecf3123eeffaa504e9ebea0a8e8655fa, type: 3}
