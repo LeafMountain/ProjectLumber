@@ -2014,10 +2014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f85b4e9c3d4f1a4da0ff3d1867ba9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Town Hall
+  data: {fileID: 11400000, guid: 3a9c1b79940ac74429907867dbfa25cd, type: 2}
   state: 0
   navObstacle: {fileID: 208678525314214364}
-  recipe: []
   buildMaterials: []
   resourceNotification: {fileID: 0}
 --- !u!114 &8908399558407777085

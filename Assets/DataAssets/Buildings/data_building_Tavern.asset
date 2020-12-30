@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 923cc7f5287d16f42ab1ea089cde2d03, type: 3}
-  m_Name: Stockpile
+  m_Name: data_building_Tavern
   m_EditorClassIdentifier: 
-  name: Stockpile
-  icon: {fileID: 21300000, guid: 21923b0c94c10d64bab4c9f792f3580a, type: 3}
-  prefab: {fileID: 7580064674373096, guid: 2ec7ea38f111fda4bb5439ae7c598093, type: 3}
+  name: Tavern
+  icon: {fileID: 21300000, guid: af9b76cccb2bcd743b0b765257aa1bce, type: 3}
+  prefab: {fileID: -7205577665301991408, guid: 8a4e36bea94d6214597e736b7cc7ea82, type: 3}
+  recipe: []

@@ -11,6 +11,10 @@ public class UI : MonoBehaviour
 
     public ResourceNotification resourceNotificationPrefab;
 
+    public Transform lowLevel;
+    public Transform midLevel;
+    public Transform highLevel;
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,7 +26,7 @@ public class UI : MonoBehaviour
     public static void ShowNotification(Interactable interactable, string text)
     {
         Vector3 notificationPosition = Camera.main.WorldToScreenPoint(interactable.transform.position);
-        Addressables.InstantiateAsync("UI/GeneralNotification", UI.Instance.transform).Completed += (result) =>
+        Addressables.InstantiateAsync("UI/GeneralNotification", UI.Instance.midLevel).Completed += (result) =>
         {
             result.Result.transform.position = notificationPosition;
             result.Result.GetComponentInChildren<TMP_Text>().SetText(text);
@@ -36,6 +40,6 @@ public class UI : MonoBehaviour
 
     public static ResourceNotification GetResourceNotification()
     {
-        return Instantiate(Instance.resourceNotificationPrefab, Instance.transform);
+        return Instantiate(Instance.resourceNotificationPrefab, Instance.lowLevel);
     }
 }

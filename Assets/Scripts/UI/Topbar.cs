@@ -18,21 +18,22 @@ public class Topbar : MonoBehaviour
             {
                 bool iconExits = trackItems[i].icon;
                 resourceFields[i].icon.gameObject.SetActive(iconExits);
-                resourceFields[i].icon.sprite = trackItems[i].icon;
+                //resourceFields[i].icon.sprite = trackItems[i].icon;
+                resourceFields[i].resourceBubble.Setup(trackItems[i]);
 
                 string text = string.Empty;
-                if (iconExits == false)
-                {
-                    text += $"{trackItems[i].name}";
-                }
+                //if (iconExits == false)
+                //{
+                //    text += $"{trackItems[i].name}";
+                //}
 
                 if (GameManager.Instance.items.ContainsKey(trackItems[i]))
                 {
-                    text += ($": {GameManager.Instance.items[trackItems[i]].Count.ToString()}");
+                    text += ($"{GameManager.Instance.items[trackItems[i]].Count.ToString()}");
                 }
                 else
                 {
-                    text += ($"{trackItems[i].name}: 0");
+                    text += ($"0");
                 }
                 resourceFields[i].text.SetText($"{text}");
 

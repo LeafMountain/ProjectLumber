@@ -67,12 +67,23 @@ public class InteractionSystem : MonoBehaviour
     public void Update()
     {
         bool overUI = EventSystem.current.IsPointerOverGameObject();
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseHit);
+        if(BuildMenu.building)
+        {
+            mouseHit = default;
+        }
+
         // Get Hover target
         if (overUI == false)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseHit))
+            //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseHit))
             {
                 Interactable newHoverInteractable = mouseHit.transform?.GetComponent<Interactable>();
+                if(newHoverInteractable && newHoverInteractable.enabled == false)
+                {
+                    hoverInteractable = null;
+                }
+
                 if (hoverInteractable != null && hoverInteractable != mouseHit.transform)
                 {
                     hoverInteractable.OnUnhover();
@@ -150,12 +161,18 @@ public class InteractionSystem : MonoBehaviour
             if(result.Count > 0)
             {
                 hoverUI = result[0].gameObject;
-                Debug.Log(hoverUI);
             }
         }
 
         // Show hover tooltip
-        if (overUI && hoverUI)
+        if(BuildMenu.building)
+        {
+            hoverTooltip.gameObject.SetActive(false);
+            hoverMarker.gameObject.SetActive(false);
+            hoverMarker.transform.SetParent(null);
+            selectionMarker.gameObject.SetActive(false);
+        }
+        else if (overUI && hoverUI)
         {
             IUIHoverInfo hoverInfo = hoverUI.GetComponent<IUIHoverInfo>();
             if (hoverInfo != null)

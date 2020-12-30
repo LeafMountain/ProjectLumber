@@ -6,7 +6,7 @@ public class Storable : MonoBehaviour, IInteractable
 {
     public enum State
     {
-        Normal = 0,
+        InWorld = 0,
         InUse = 1,
         InInventory = 2,
     }

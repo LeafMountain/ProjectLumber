@@ -8,4 +8,5 @@ public class GenericUIElement : MonoBehaviour
 {
     public TMP_Text text;
     public Image icon;
+    public ResourceBubble resourceBubble;
 }

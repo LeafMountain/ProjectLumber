@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 923cc7f5287d16f42ab1ea089cde2d03, type: 3}
-  m_Name: Tavern
+  m_Name: data_building_field
   m_EditorClassIdentifier: 
-  name: Tavern
-  icon: {fileID: 21300000, guid: af9b76cccb2bcd743b0b765257aa1bce, type: 3}
-  prefab: {fileID: -7205577665301991408, guid: 8a4e36bea94d6214597e736b7cc7ea82, type: 3}
+  name: Field
+  icon: {fileID: 21300000, guid: 3292e0ee6be76a945861977edb9fa89c, type: 3}
+  prefab: {fileID: 3986000879060443588, guid: 46e7c826e5fbc4148a8c28d9e9d6344d, type: 3}
+  recipe:
+  - {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}
+  - {fileID: 11400000, guid: d4b80ef9c8b013e499184978173de438, type: 2}

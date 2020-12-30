@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d2dbb30291bc4c4a8dea174a31cc03f, type: 3}
-  m_Name: Stone
+  m_Name: data_item_Stone
   m_EditorClassIdentifier: 
   name: Stone
   prefab: {fileID: 2948698395520257691, guid: 629fc0b07bb48794a913a1f30bb4d8b2, type: 3}

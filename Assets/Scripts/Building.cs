@@ -13,10 +13,9 @@ public class Building : MonoBehaviour, IInteractable
         Placing = 2,
     }
 
-    new public string name;
+    public BuildingData data;
     public State state;
     public NavMeshObstacle navObstacle;
-    public ItemData[] recipe;
 
     public List<Item> buildMaterials = new List<Item>();
 
@@ -36,7 +35,10 @@ public class Building : MonoBehaviour, IInteractable
         {
             case State.Normal:
                 GetComponentInChildren<Renderer>().material.color = Color.white;
-                navObstacle.enabled = true;
+                if (navObstacle)
+                {
+                    navObstacle.enabled = true;
+                }
                 break;
             case State.Building:
                 {
@@ -48,7 +50,10 @@ public class Building : MonoBehaviour, IInteractable
                     resourceNotification.objectTracker.target = transform;
                     resourceNotification.gameObject.SetActive(true);
                     GetComponentInChildren<Renderer>().material.color = Color.green;
-                    navObstacle.enabled = false;
+                    if (navObstacle)
+                    {
+                        navObstacle.enabled = false;
+                    }
                     break;
                 }
         }
@@ -59,7 +64,7 @@ public class Building : MonoBehaviour, IInteractable
     public ItemData[] GetMissingIngredients()
     {
         List<ItemData> missingMaterials = new List<ItemData>();
-        missingMaterials.AddRange(recipe);
+        missingMaterials.AddRange(data.recipe);
 
         for (int i = 0; i < buildMaterials.Count; i++)
         {
@@ -83,11 +88,12 @@ public class Building : MonoBehaviour, IInteractable
 
         yield return unit.navAgent.MoveToInteractableSeq(GetComponent<Interactable>());
 
-        if (buildMaterials.Count < recipe.Length)
+        if (buildMaterials.Count < data.recipe.Length)
         {
-            for (int i = 0; i < recipe.Length; i++)
+            ItemData[] missingIngredients = GetMissingIngredients();
+            for (int i = 0; i < missingIngredients.Length; i++)
             {
-                Item foundItem = Item.FindItem(recipe[i]);
+                Item foundItem = Item.FindItem(missingIngredients[i]);
                 if (foundItem != null)
                 {
                     Storable storable = foundItem.GetComponent<Storable>();
@@ -107,7 +113,21 @@ public class Building : MonoBehaviour, IInteractable
         {
             CompleteBuilding();
         }
-        yield return null;
+        yield return new WaitForSeconds(2f);
+
+        // Keep building the other buildings nearby
+        Collider[] nearby = Physics.OverlapSphere(unit.transform.position, 10f);
+        if (nearby != null)
+        {
+            for (int i = 0; i < nearby.Length; i++)
+            {
+                Building nearbyBuilding = nearby[i].GetComponent<Building>();
+                if (nearbyBuilding && nearbyBuilding.state == State.Building)
+                {
+                    yield return nearbyBuilding.DoInteraction(unit);
+                }
+            }
+        }
         yield break;
     }
 
@@ -120,11 +140,11 @@ public class Building : MonoBehaviour, IInteractable
             item.gameObject.SetActive(false);
         }
 
-        float yScale = (float)buildMaterials.Count / (recipe.Length + 1f);
+        float yScale = (float)buildMaterials.Count / (data.recipe.Length + 1f);
         Tweener buildTweener = transform.DOScaleY(yScale, 1f).SetEase(Ease.InOutElastic);
         resourceNotification.Set(GetMissingIngredients());
 
-        if (buildMaterials.Count == recipe.Length)
+        if (buildMaterials.Count == data.recipe.Length)
         {
             state = State.Normal;
             buildTweener.onComplete += () =>
@@ -138,7 +158,7 @@ public class Building : MonoBehaviour, IInteractable
     {
         SetState(State.Normal);
         transform.DOScale(1f, 1f).SetEase(Ease.InOutElastic);
-        UI.ShowNotification(GetComponent<Interactable>(), $"{name} Complete!");
+        UI.ShowNotification(GetComponent<Interactable>(), $"{data.name} Complete!");
         resourceNotification.gameObject.SetActive(false);
     }
 

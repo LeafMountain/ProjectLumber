@@ -7,15 +7,18 @@ public class Inventory : MonoBehaviour, IInteractable
     public static List<Inventory> inventories = new List<Inventory>();
     public Storable[] storables;
     public Transform[] storableSlots;
+    public bool globalInventory = true;
 
     private void Awake()
     {
-        inventories.Add(this);
+        if(globalInventory)
+            inventories.Add(this);
     }
 
     private void OnDestroy()
     {
-        inventories.Remove(this);
+        if (globalInventory)
+            inventories.Remove(this);
     }
 
     public bool Deposit(Storable storable)
@@ -38,14 +41,17 @@ public class Inventory : MonoBehaviour, IInteractable
                 storable.state = Storable.State.InInventory;
                 storable.currentInventory = this;
 
-                Item item = storable.GetComponent<Item>();
-                if (GameManager.Instance.items.ContainsKey(item.data) == false)
+                if(globalInventory)
                 {
-                    GameManager.Instance.items.Add(item.data, new List<Item>());
-                }
-                else
-                {
-                    GameManager.Instance.items[item.data].Add(item);
+                    Item item = storable.GetComponent<Item>();
+                    if (GameManager.Instance.items.ContainsKey(item.data) == false)
+                    {
+                        GameManager.Instance.items.Add(item.data, new List<Item>() { item });
+                    }
+                    else
+                    {
+                        GameManager.Instance.items[item.data].Add(item);
+                    }
                 }
 
                 return true;
@@ -63,13 +69,16 @@ public class Inventory : MonoBehaviour, IInteractable
                 storables[i] = null;
                 storable.gameObject.SetActive(true);
                 storable.gameObject.transform.SetParent(null);
-                storable.state = Storable.State.Normal;
+                storable.state = Storable.State.InWorld;
                 storable.currentInventory = null;
 
-                Item item = storable.GetComponent<Item>();
-                if (GameManager.Instance.items.ContainsKey(item.data))
+                if (globalInventory)
                 {
-                    GameManager.Instance.items[item.data].Remove(item);
+                    Item item = storable.GetComponent<Item>();
+                    if (GameManager.Instance.items.ContainsKey(item.data))
+                    {
+                        GameManager.Instance.items[item.data].Remove(item);
+                    }
                 }
 
                 return storable;

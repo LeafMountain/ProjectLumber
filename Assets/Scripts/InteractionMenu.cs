@@ -77,7 +77,6 @@ public class InteractionMenu : UIElement
             int index = i;
             interactionButton.button.onClick.AddListener(() =>
             {
-                Debug.Log(interactionName);
                 InteractionSystem.SendInteraction(interactions[index]);
                 Close();
             });

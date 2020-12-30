@@ -15,13 +15,13 @@ public class Interactable : MonoBehaviour, IUIHoverInfo
 
     public void OnSelected()
     {
-        GetComponentInChildren<Renderer>().material.color = Color.red;
+        //GetComponentInChildren<Renderer>().material.color = Color.red;
         selected = true;
     }
 
     public void OnDeselected()
     {
-        GetComponentInChildren<Renderer>().material.color = Color.white;
+        //GetComponentInChildren<Renderer>().material.color = Color.white;
         selected = false;
     }
 
@@ -46,7 +46,7 @@ public class Interactable : MonoBehaviour, IUIHoverInfo
         Building building = GetComponent<Building>();
         if (building)
         {
-            return building.name;
+            return building.data.name;
         }
 
         Item item = GetComponent<Item>();

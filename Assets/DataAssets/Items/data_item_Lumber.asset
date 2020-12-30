@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d2dbb30291bc4c4a8dea174a31cc03f, type: 3}
-  m_Name: Lumber
+  m_Name: data_item_Lumber
   m_EditorClassIdentifier: 
   name: Lumber
   prefab: {fileID: 1970807921682726, guid: b083c3d3e9497d04e82e03336384d843, type: 3}

@@ -141,14 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f85b4e9c3d4f1a4da0ff3d1867ba9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Tavern
+  data: {fileID: 11400000, guid: b34563226dc617d48bf7a24848b1a361, type: 2}
   state: 0
   navObstacle: {fileID: 208138704928293268}
-  recipe:
-  - {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}
-  - {fileID: 11400000, guid: 95f598432a2282d4482ae7f7f700e19a, type: 2}
-  - {fileID: 11400000, guid: d4b80ef9c8b013e499184978173de438, type: 2}
   buildMaterials: []
+  resourceNotification: {fileID: 0}
 --- !u!114 &-1115564521182157273
 MonoBehaviour:
   m_ObjectHideFlags: 0

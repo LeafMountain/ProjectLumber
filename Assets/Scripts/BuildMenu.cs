@@ -109,11 +109,24 @@ public class BuildMenu : UIElement
         }
         placingBuilding = Instantiate(building.prefab);
         placingBuilding.SetState(Building.State.Placing);
+        placingBuilding.GetComponent<Interactable>().enabled = false;
+        placingBuilding.GetComponent<Collider>().enabled = false;
+        if(placingBuilding.navObstacle)
+        {
+            placingBuilding.navObstacle.enabled = false;
+        }
+
         BuildMenu.building = true;
     }
 
     public void PlaceBuilding()
     {
+        placingBuilding.GetComponent<Interactable>().enabled = true;
+        placingBuilding.GetComponent<Collider>().enabled = true;
+        if (placingBuilding.navObstacle)
+        {
+            placingBuilding.navObstacle.enabled = true;
+        }
         placingBuilding.transform.DOScaleY(.1f, .2f).SetEase(Ease.OutElastic);
         placingBuilding.transform.position = placementPosition;
         placingBuilding.transform.rotation = Quaternion.Euler(desiredRotation);
