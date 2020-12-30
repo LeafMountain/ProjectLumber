@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Harvestable : MonoBehaviour, IUnitInteractable
+public class Harvestable : MonoBehaviour, IInteractable
 {
     public Item item;
     public float harvestTime = 2f;
@@ -45,6 +45,10 @@ public class Harvestable : MonoBehaviour, IUnitInteractable
 
     public bool IsEnabled()
     {
+        if (InteractionSystem.Instance.interactables.Count == 0 || InteractionSystem.Instance.interactables[0] == GetComponent<Interactable>())
+        {
+            return false;
+        }
         return true;
     }
 }

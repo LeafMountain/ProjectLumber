@@ -6,18 +6,18 @@ using DG.Tweening;
 
 public class ResourceNotification : MonoBehaviour
 {
-    public Image[] icons;
+    public ResourceBubble[] resourceBubbles;
     public UIObjectTracker objectTracker;
 
     public void Set(ItemData[] items)
     {
         transform.DOScale(1f, .2f).SetEase(Ease.OutElastic);
-        for (int i = 0; i < icons.Length; i++)
+        for (int i = 0; i < resourceBubbles.Length; i++)
         {
-            icons[i].gameObject.SetActive(i < items.Length);
+            resourceBubbles[i].gameObject.SetActive(i < items.Length);
             if (i < items.Length)
             {
-                icons[i].sprite = items[i].icon;
+                resourceBubbles[i].icon.sprite= items[i].icon;
             }
         }
     }

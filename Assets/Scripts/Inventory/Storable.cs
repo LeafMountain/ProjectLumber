@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Storable : MonoBehaviour, IUnitInteractable
+public class Storable : MonoBehaviour, IInteractable
 {
     public enum State
     {
@@ -36,6 +36,10 @@ public class Storable : MonoBehaviour, IUnitInteractable
 
     public bool IsEnabled()
     {
+        if (InteractionSystem.Instance.interactables.Count == 0 || InteractionSystem.Instance.interactables[0] == GetComponent<Interactable>())
+        {
+            return false;
+        }
         return true;
     }
 

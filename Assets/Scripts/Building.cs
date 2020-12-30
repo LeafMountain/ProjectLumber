@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class Building : MonoBehaviour, IUnitInteractable
+public class Building : MonoBehaviour, IInteractable
 {
     public enum State
     {

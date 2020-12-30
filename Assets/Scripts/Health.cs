@@ -7,7 +7,7 @@ using DG.Tweening;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IUnitInteractable
+public class Health : MonoBehaviour, IInteractable
 {
     public UnityEvent OnDead;
     public int health;
@@ -84,6 +84,10 @@ public class Health : MonoBehaviour, IUnitInteractable
 
     public bool IsEnabled()
     {
+        if(InteractionSystem.Instance.interactables.Count == 0 || InteractionSystem.Instance.interactables[0] == GetComponent<Interactable>())
+        {
+            return false;
+        }
         return true;
     }
 

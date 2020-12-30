@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IUIHoverInfo
 {
     public delegate void InteractableEvent(Interactable interactable);
     public static InteractableEvent OnSelection;
@@ -56,5 +56,10 @@ public class Interactable : MonoBehaviour
         }
 
         return name;
+    }
+
+    public string GetTooltip()
+    {
+        return GetName();
     }
 }

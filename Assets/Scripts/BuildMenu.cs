@@ -1,7 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.IO.Compression;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +8,7 @@ public class BuildMenu : UIElement
 {
     public static bool building;
 
-    public Building[] buildings;
+    public BuildingData[] buildings;
     public GameObject buttonPrefab;
     public Transform buttonParent;
 
@@ -20,6 +17,7 @@ public class BuildMenu : UIElement
     public LayerMask placementLayer;
 
     // Read only
+    private BuildingData placingBuildingData;
     private Building placingBuilding;
     private Vector3 placementPosition;
     private Vector3 desiredRotation;
@@ -101,14 +99,15 @@ public class BuildMenu : UIElement
         }
     }
 
-    public void StartPlacingBuilding(Building building)
+    public void StartPlacingBuilding(BuildingData building)
     {
+        placingBuildingData = building;
         desiredRotation = Vector3.zero;
         if (placingBuilding)
         {
             Destroy(placingBuilding.gameObject);
         }
-        placingBuilding = Instantiate(building);
+        placingBuilding = Instantiate(building.prefab);
         placingBuilding.SetState(Building.State.Placing);
         BuildMenu.building = true;
     }
@@ -120,6 +119,10 @@ public class BuildMenu : UIElement
         placingBuilding.transform.rotation = Quaternion.Euler(desiredRotation);
         placingBuilding.SetState(Building.State.Building);
         placingBuilding = null;
-        BuildMenu.building = false;
+        building = false;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            StartPlacingBuilding(placingBuildingData);
+        }
     }
 }

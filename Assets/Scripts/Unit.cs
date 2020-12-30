@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour, IRightClickInteraction, IInteractionReceiver
 
     private IEnumerator ticker;
 
-    public IUnitInteractable currentInteraction;
+    public IInteractable currentInteraction;
 
     private void Start()
     {
@@ -60,7 +60,7 @@ public class Unit : MonoBehaviour, IRightClickInteraction, IInteractionReceiver
         }
     }
 
-    public void ReceiveInteraction(IUnitInteractable interaction)
+    public void ReceiveInteraction(IInteractable interaction)
     {
         currentInteraction = interaction;
     }

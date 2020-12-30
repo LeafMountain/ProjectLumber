@@ -64,7 +64,7 @@ public class InteractionMenu : UIElement
         }
         spawnedButtons.Clear();
 
-        IUnitInteractable[] interactions = target.GetComponents<IUnitInteractable>();
+        IInteractable[] interactions = target.GetComponents<IInteractable>();
         for (int i = 0; i < interactions.Length; i++)
         {
             if (!interactions[i].IsEnabled())
@@ -87,6 +87,8 @@ public class InteractionMenu : UIElement
 
             interactionButton.text.SetText(interactions[i].GetName());
             interactionButton.icon.sprite = interactions[i].GetIcon();
+
+            interactionButton.info = interactions[i].GetName();
         }
 
         gameObject.SetActive(true);

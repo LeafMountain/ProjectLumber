@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour, IUnitInteractable
+public class Inventory : MonoBehaviour, IInteractable
 {
     public static List<Inventory> inventories = new List<Inventory>();
     public Storable[] storables;
@@ -165,12 +165,30 @@ public class Inventory : MonoBehaviour, IUnitInteractable
 
     public bool IsEnabled()
     {
-        return GetComponent<Building>().state == Building.State.Normal;
+        if(InteractionSystem.Instance.interactables.Count == 0 || InteractionSystem.Instance.interactables[0] == GetComponent<Interactable>())
+        {
+            return false;
+        }
+
+        Building building = GetComponent<Building>();
+        if(building)
+        {
+            return building.state == Building.State.Normal;
+        }
+        return true;
     }
 
     public string GetName()
     {
-        return "Store";
+        Building building = GetComponent<Building>();
+        if(building)
+        {
+            return "Store";
+        }
+        else
+        {
+            return "Give";
+        }
     }
 
     public Sprite GetIcon()

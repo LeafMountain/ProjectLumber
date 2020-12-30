@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractionReceiver
 {
-    void ReceiveInteraction(IUnitInteractable interaction);
+    void ReceiveInteraction(IInteractable interaction);
 }

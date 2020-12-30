@@ -11,7 +11,16 @@ public class InteractionSystem : MonoBehaviour
 
     public static InteractionSystem Instance;
     public List<Interactable> interactables = new List<Interactable>();
+
+    // Prefabs
+    public GameObject hoverMarker;
+    public GenericUIElement hoverTooltip;
+    public GameObject selectionMarker;
+
+    [Header("Read only")]
     public Interactable hoverInteractable = null;
+    public GameObject hoverUI;
+    public RaycastHit mouseHit;
 
     private void Awake()
     {
@@ -28,6 +37,13 @@ public class InteractionSystem : MonoBehaviour
         Instance.interactables.Add(interactable);
         interactable.OnSelected();
         OnUpdated?.Invoke();
+
+        Collider collider = interactable.GetComponent<Collider>();
+        Instance.selectionMarker.transform.localScale = collider.bounds.size * 2f;
+        //Instance.selectionMarker.transform.localPosition = collider.bounds.min + new Vector3(collider.bounds.extents.x, 0, collider.bounds.extents.z);
+        Instance.selectionMarker.transform.SetParent(interactable.transform);
+        Instance.selectionMarker.transform.localPosition = Vector3.zero;
+        Instance.selectionMarker.SetActive(true);
     }
 
     public static void RemoveInteractable(Interactable interactable)
@@ -35,6 +51,8 @@ public class InteractionSystem : MonoBehaviour
         Instance.interactables.Remove(interactable);
         interactable.OnDeselected();
         OnUpdated?.Invoke();
+
+        Instance.selectionMarker.SetActive(false);
     }
 
     public static void ClearSelection()
@@ -50,20 +68,25 @@ public class InteractionSystem : MonoBehaviour
     {
         bool overUI = EventSystem.current.IsPointerOverGameObject();
         // Get Hover target
-        RaycastHit hit = default;
         if (overUI == false)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out mouseHit))
             {
-                Interactable newHoverInteractable = hit.transform?.GetComponent<Interactable>();
-                if (hoverInteractable != null && hoverInteractable != hit.transform)
+                Interactable newHoverInteractable = mouseHit.transform?.GetComponent<Interactable>();
+                if (hoverInteractable != null && hoverInteractable != mouseHit.transform)
                 {
                     hoverInteractable.OnUnhover();
+                    hoverMarker.transform.SetParent(null);
+                    hoverMarker.SetActive(false);
                 }
                 hoverInteractable = newHoverInteractable;
                 if (hoverInteractable != null)
                 {
                     hoverInteractable.OnHover();
+                    hoverMarker.transform.localScale = mouseHit.collider.bounds.size * 2f;
+                    hoverMarker.transform.localPosition = mouseHit.collider.bounds.min + new Vector3(mouseHit.collider.bounds.extents.x, 0, mouseHit.collider.bounds.extents.z);
+                    hoverMarker.transform.SetParent(hoverInteractable.transform);
+                    hoverMarker.SetActive(true);
                 }
             }
         }
@@ -109,7 +132,7 @@ public class InteractionSystem : MonoBehaviour
                     {
                         if (interactables[i].GetComponent<Unit>() is Unit unit)
                         {
-                            unit.navAgent.SetDestination(hit.point);
+                            unit.navAgent.SetDestination(mouseHit.point);
                             unit.currentInteraction = null;
                         }
                     }
@@ -117,9 +140,49 @@ public class InteractionSystem : MonoBehaviour
             }
         }
 
+        // Get hover over UI
+        if(overUI)
+        {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = Input.mousePosition;
+            List<RaycastResult> result = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerEventData, result);
+            if(result.Count > 0)
+            {
+                hoverUI = result[0].gameObject;
+                Debug.Log(hoverUI);
+            }
+        }
+
+        // Show hover tooltip
+        if (overUI && hoverUI)
+        {
+            IUIHoverInfo hoverInfo = hoverUI.GetComponent<IUIHoverInfo>();
+            if (hoverInfo != null)
+            {
+                hoverTooltip.text.SetText(hoverInfo.GetTooltip());
+                hoverTooltip.transform.position = hoverUI.transform.position + new Vector3(0f, -40f);
+                hoverTooltip.gameObject.SetActive(true);
+            }
+        }
+        else if (hoverInteractable)
+        {
+            IUIHoverInfo hoverInfo = hoverInteractable.GetComponent<IUIHoverInfo>();
+            if (hoverInfo != null)
+            {
+                hoverTooltip.text.SetText(hoverInfo.GetTooltip());
+                //hoverTooltip.transform.position = Input.mousePosition + new Vector3(40f, 20f);    // Mouse position
+                hoverTooltip.transform.position = Camera.main.WorldToScreenPoint(mouseHit.collider.bounds.max);
+                hoverTooltip.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            hoverTooltip.gameObject.SetActive(false);
+        }
     }
 
-    public static void SendInteraction(IUnitInteractable interaction)
+    public static void SendInteraction(IInteractable interaction)
     {
         for (int i = 0; i < Instance.interactables.Count; i++)
         {
